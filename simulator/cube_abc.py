@@ -7,12 +7,12 @@ import random
 class Cube(ABC):
     def __init__(self, n):
         self.cube = np.zeros((6,n,n))
-        self.cube[Sides.TOP] = np.ones((n,n)) * Colors.WHITE 
-        self.cube[Sides.BOTTOM] = np.ones((n,n)) * Colors.YELLOW 
-        self.cube[Sides.FRONT] = np.ones((n,n)) * Colors.BLUE 
-        self.cube[Sides.BACK] = np.ones((n,n)) * Colors.GREEN
-        self.cube[Sides.LEFT] = np.ones((n,n)) * Colors.RED
-        self.cube[Sides.RIGHT] = np.ones((n,n)) * Colors.ORANGE
+        self.cube[Sides.TOP.value] = np.ones((n,n)) * Colors.WHITE.value
+        self.cube[Sides.BOTTOM.value] = np.ones((n,n)) * Colors.YELLOW.value
+        self.cube[Sides.FRONT.value] = np.ones((n,n)) * Colors.BLUE.value
+        self.cube[Sides.BACK.value] = np.ones((n,n)) * Colors.GREEN.value
+        self.cube[Sides.LEFT.value] = np.ones((n,n)) * Colors.RED.value
+        self.cube[Sides.RIGHT.value] = np.ones((n,n)) * Colors.ORANGE.value
         self.solved = self.cube.copy()
 
     @abstractmethod
@@ -43,3 +43,8 @@ class Cube(ABC):
         # perform moves on cube to shuffle
         for move in moves:
             self.process_action(move)
+
+    def print_cube(self):
+        for side in Sides:
+            print("Side: ", side)
+            print(self.cube[side.value])
