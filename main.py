@@ -1,11 +1,27 @@
-from simulator.cube3 import Cube3
-from simulator.cube_abc import *
+from simulator.game15 import *
 from utils.enums import *
 
 # for testing cube stuff
-cube = Cube3()
-cube.print_cube()
+grid = Grid(4)
+grid.print_grid()
 
-cube.process_action(Moves.BACK_CCW)
+grid.process_move(Moves.UP)
+grid.print_grid()
 
-cube.print_cube()
+grid.process_move(Moves.UP)
+grid.print_grid()
+
+grid.process_move(Moves.DOWN)
+grid.print_grid()
+
+grid.process_move(Moves.RIGHT)
+grid.print_grid()
+
+grid.process_move(Moves.LEFT)
+grid.print_grid()
+
+grid.process_move(Moves.LEFT)
+grid.print_grid()
+
+grid.process_move(Moves.RIGHT)
+grid.print_grid()
