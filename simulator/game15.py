@@ -1,5 +1,5 @@
 import numpy as np
-from utils.enums import *
+from util.enums import *
 import random
 
 class Grid():
@@ -23,28 +23,28 @@ class Grid():
         row = self.emptyLocation[0] 
         col = self.emptyLocation[1]
 
-        if move == Moves.UP:
+        if move == Move.UP:
             if row == 0:
                 return 'INVALID'
             self.grid[row,col], self.grid[row-1,col] = self.grid[row-1,col], self.grid[row,col]
             self.emptyLocation = (row-1,col)
             return 'VALID'
 
-        elif move == Moves.DOWN:
+        elif move == Move.DOWN:
             if row == self.n-1:
                 return 'INVALID'
             self.grid[row,col], self.grid[row+1,col] = self.grid[row+1,col], self.grid[row,col]
             self.emptyLocation = (row+1,col)
             return 'VALID'
         
-        elif move == Moves.LEFT:
+        elif move == Move.LEFT:
             if col == 0:
                 return 'INVALID'
             self.grid[row,col], self.grid[row,col-1] = self.grid[row,col-1], self.grid[row,col]
             self.emptyLocation = (row,col-1)
             return 'VALID'
         
-        elif move == Moves.RIGHT:
+        elif move == Move.RIGHT:
             if col == self.n-1:
                 return 'INVALID'
             self.grid[row,col], self.grid[row,col+1] = self.grid[row,col+1], self.grid[row,col]
@@ -64,12 +64,12 @@ class Grid():
         return self.grid
 
     def is_solved(self):
-        return self.grid == self.solved
+        return np.all(self.grid == self.solved)
     
     def shuffle_n(self, n):
         # create n random moves and perform them on grid to shuffle
         # maybe prevent back and forths??
-        actions = [Moves.UP, Moves.DOWN, Moves.LEFT, Moves.RIGHT]
+        actions = [Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT]
         moves = []
         for _ in range(n):
             moves.append(random.choice(actions))

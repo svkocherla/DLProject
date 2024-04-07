@@ -5,23 +5,23 @@ from utils.enums import *
 grid = Grid(4)
 grid.print_grid()
 
-grid.process_move(Moves.UP)
+grid.process_move(Move.UP)
 grid.print_grid()
 
-grid.process_move(Moves.UP)
+grid.process_move(Move.UP)
 grid.print_grid()
 
-grid.process_move(Moves.DOWN)
+grid.process_move(Move.DOWN)
 grid.print_grid()
 
-grid.process_move(Moves.RIGHT)
+grid.process_move(Move.RIGHT)
 grid.print_grid()
 
-grid.process_move(Moves.LEFT)
+grid.process_move(Move.LEFT)
 grid.print_grid()
 
-grid.process_move(Moves.LEFT)
+grid.process_move(Move.LEFT)
 grid.print_grid()
 
-grid.process_move(Moves.RIGHT)
+grid.process_move(Move.RIGHT)
 grid.print_grid()
