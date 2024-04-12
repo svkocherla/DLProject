@@ -58,7 +58,11 @@ class Grid():
     @staticmethod
     def get_reward(self, oldgrid, newgrid, action):
         # return reward from (old state, action) -> (new state, reward)
-        pass
+        if np.all(oldgrid == newgrid):
+            return -1
+        if self.is_solved():
+            return 100
+        return 0
 
     def get_state(self):
         return self.grid
