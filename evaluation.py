@@ -1,4 +1,4 @@
-from models.FFN import FFN
+# from models import FFN
 from policies import NNPolicy, Policy
 from simulator.game15 import Grid
 from tqdm.auto import tqdm
@@ -20,22 +20,28 @@ def play(grid: Grid, policy: Policy, max_moves=10000):
             break
     return moves
 
-n_games = 10
-n_shuffles = 100
-
-def main():
-    model = FFN()
-    policy = NNPolicy(model)
+def evaluate(grid: Grid, policy, n_games=10, max_moves=10000, n_shuffles=10, verbose=False):
+    games = range(n_games)
+    if verbose: 
+        games = tqdm(games, desc="Playing Games")
 
     n_solved = 0
-    for g in tqdm(range(n_games), desc="Playing Games"):
-        grid = Grid()
+    for game in games:
+        grid.reset()
         grid.shuffle_n(n_shuffles)
         play(grid, policy)
         if grid.is_solved():
             n_solved+=1
-    
-    print(f"{float(n_solved * 100)/n_games:.2f}% success rate: {n_solved}/{n_games} games solved.")
+    success = float(n_solved * 100)/n_games
+    return success
 
-if __name__ == "__main__":
-    main()
+# def main():
+#     model = FFN()
+#     policy = NNPolicy(model)
+
+#     n_solved = 0
+
+#     # print(f"{float(n_solved * 100)/n_games:.2f}% success rate: {n_solved}/{n_games} games solved.")
+
+# if __name__ == "__main__":
+#     main()

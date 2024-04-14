@@ -1,5 +1,5 @@
 from simulator.game15 import *
-from utils.enums import *
+from util.enums import *
 
 # for testing cube stuff
 grid = Grid(4)

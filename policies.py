@@ -81,5 +81,3 @@ class ValueIterationPolicy(Policy):
                 total_loss += loss
             avg_loss = total_loss / len(grids)
             print(f"Average Loss: {avg_loss}")
-
-

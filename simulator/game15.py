@@ -6,6 +6,7 @@ class Grid():
     #init grid of size n x n; let 15 represent the empty square
     def __init__(self, n):
         self.n = n
+        self.original = np.arange(n*n).reshape(n,n)
         self.grid = np.arange(n*n).reshape(n,n)
         self.solved = np.arange(n*n).reshape(n,n)
         self.emptyLocation = (n-1,n-1)
@@ -56,7 +57,7 @@ class Grid():
 
 
     @staticmethod
-    def get_reward(self, oldgrid, newgrid, action):
+    def get_reward(self, oldgrid, action, newgrid):
         # return reward from (old state, action) -> (new state, reward)
         if np.all(oldgrid == newgrid):
             return -1
@@ -86,3 +87,7 @@ class Grid():
 
     def print_grid(self):
         print(self.grid)
+
+    def reset(self):
+        self.grid = self.original.copy()
+        self.emptyLocation = (self.n-1,self.n-1)

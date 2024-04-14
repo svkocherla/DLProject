@@ -1,198 +1,76 @@
-from models import FFN
-from simulator.game15 import Grid
-from util.enums import *
 import torch.optim as optim
 import argparse
+import wandb
+from torch.utils.tensorboard import SummaryWriter
+
+from simulator.game15 import Grid
+from util.enums import *
+from architectures import FFN
+import models
+import reward
+import policy_optimization
+from evaluation import evaluate
+from policies import *
 
 parser = argparse.ArgumentParser("Train RL agent on Game15")
 parser.add_argument("-n", default=3, type=int, help="n x n game board")
-# checkpoint file
-# model_architecture
-# output dir for training details
-## training_loop
+parser.add_argument("--epochs", default=10, type=int)
+parser.add_argument("--episodes", default=10, type=int, help="# of episodes per epoch")
+parser.add_argument("--max-moves", default=10**5, type=int, help="max length of a trajectory")
+parser.add_argument("--shuffles", default=10, type=int, help="number of moves to shuffle")
 
-n = 3
-max_steps=10**5
-n_epochs=10
-n_episodes=10
+parser.add_argument("--model", default="ffn", type=str, help="model architecture as defined in models.py")
+parser.add_argument("--reward-fn", default="naive", type=str, help="reward function as defined in reward.py")
+parser.add_argument("--algorithm", default="reinforce", type=str, help="RL algorithm as defined in policy_optimization.py")
+parser.add_argument("--eval-batch-size", default=10, type=int, help="# of games to evaluate per epoch")
+parser.add_argument("--eval-every", default=1, type=int, help="# of epochs between each evaluation")
 
-game = Grid(n)
-model = FFN(n * n, 100) # not sure what game state representation we should use
-optimizer = optim.Adam(model.parameters)
+parser.add_argument("--run-name", default=10**5, type=str, help="")
 
-# TODO: we will need to implement distributed RL methods
-# single node for now
-for e in n_episodes:
-    for s in max_steps:
-        if game.is_solved():
-            break
-        optimizer.zero_grad()
+def main(args):
+    model = models.__dict__[args.model](args.n)
 
-        move = model(game)
-        reward = game.process_move(move)
-        loss = reward
-        loss.backward()
-        optimizer.step()
+    # TODO: if chkpt, load from checkpoint
 
-# TODO: save model to checkpoint
+    ## training_loop
+    game = Grid(args.n)
+    model = FFN(args.n, 100) # not sure what game state representation we should use
+    optimizer = optim.Adam(model.parameters())
+    train = policy_optimization.__dict__[args.algorithm]
+    reward_fn = reward.__dict__[args.reward_fn]
 
+    policy = NNPolicy(model)
 
-def train_reinforce(model, reward, optimizer="adam", learning_rate=.01):
-    out_actions = 4
-
-    game = Grid()
-
-    # actions = [Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT]
-    actions = [0, 1, 2, 3]
-    opt = None
-    if optimizer is "adam":
-        opt = optim.Adam(model.parameters(), lr=learning_rate)
-    elif optimizer is "sgd":
-        opt = optim.SGD(model.parameters(), lr=learning_rate)
-
-    for _ in range(episodes):
-        states = []
-        action_buffer = []
-        reward_buffer = []
-
-        while not game.is_solved():
-            state = game.get_state()
-            action_dist = torch.softmax(model(state)) # depends on if model output is logits or values
-            action = np.random.choice(actions, p = action_dist.numpy())
-            action_buffer.append(action)
+    for epoch in range(args.epochs):
+        # train
+        loss = train(game, model, reward_fn, optimizer, args.episodes)
+        # if epoch % args.eval_every == 0:
+        # # evaluate
+        #     success = evaluate(game, policy, 
+        #                    evaluations=args.eval_batch_size, 
+        #                    max_moves=args.max_moves, 
+        #                    n_shuffles=args.shuffles, 
+        #                    verbose=False)
+        #     # wandb.log({"success": success})
+        #     # print()
+        print(loss)
         
-            r = reward(state, action)
-            reward_buffer.append(reward)
+        # wandb.log({"loss": loss})
 
-            game.process_move(action)
+    # TODO: save model to checkpoint
 
-        reward_buffer = torch.tensor(reward_buffer)
+if __name__ == "__main__":
+    args = parser.parse_args()
 
+    # wandb.init(
+    #     # set the wandb project where this run will be logged
+    #     project="7643-project",
+    #     # track hyperparameters and run metadata
+    #     config={
+    #     **args
+    #     }
+    # )
 
-    for step in range(len(states)):
-        future_rewards = torch.sum(reward_buffer[step:])
-
-        state = states[step]
-        action = action_buffer[step]
-
-        log_prob = torch.log(model(state))[action]
-        loss = -log_prob * future_rewards
-        opt.zero_grad()
-        loss.backward()
-        opt.step()
-
-    return model
-
-
-def train_ppo(model, reward, optimizer="adam", learning_rate=.01, gamma = .9, epsilon =.2, clip = .1):
-    out_actions = 4
-
-    game = Grid()
-
-    # actions = [Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT]
-    actions = [0, 1, 2, 3]
-    opt = None
-    if optimizer is "adam":
-        opt = optim.Adam(model.parameters(), lr=learning_rate)
-    elif optimizer is "sgd":
-        opt = optim.SGD(model.parameters(), lr=learning_rate)
-
-    for _ in range(episodes):
-        states = []
-        action_buffer = []
-        reward_buffer = []
-        value_buffer = []
-
-        while not game.is_solved():
-            state = game.get_state()
-            logits = model(state)
-            action_dist = torch.softmax(logits) # depends on if model output is logits or values
-            action = np.random.choice(actions, p = action_dist.numpy())
-            action_buffer.append(action)
-        
-            r = reward(state, action)
-            reward_buffer.append(reward)
-
-            value = torch.max(logits)
-
-            value_buffer.append(value)
-
-            game.process_move(action)
-
-        reward_buffer = torch.tensor(reward_buffer)
-        value_buffer = torch.tensor(value_buffer)
-        returns = calculate_ppo_returns(returns, gamma)
-
-        adv = returns - value_buffer
-
-        adv = (adv - torch.mean(adv))/ torch.std(adv)
-
-        update_ppo(model, optimizer, states, action_buffer, returns, adv, epsilon, clip)
-
-
-    for step in range(len(states)):
-        future_rewards = torch.sum(reward_buffer[step:])
-
-        state = states[step]
-        action = action_buffer[step]
-
-        log_prob = torch.log(model(state))[action]
-        loss = -log_prob * future_rewards
-        opt.zero_grad()
-        loss.backward()
-        opt.step()
-    
-    return model
-
-def calculate_ppo_returns(reward_buffer, gamma):
-    returns = []
-    R = 0
-    for r in range(len(reward_buffer)):
-        reward = reward_buffer[len(reward_buffer)-r-1]
-        R = reward + gamma * R
-        returns.append(R)
-
-    returns = reversed(returns)
-    return torch.tensor(returns)
-
-def update_ppo(model, optimizer, states, actions_buffer, returns, advantages, epsilon, clip_threshold):
-    model.eval()
-    
-    logits = torch.tensor()
-    
-    for observation in states:
-        output = model(state)
-        logits = torch.vstack(logits, output)
-
-    probs = torch.softmax(logits, dim=-1)
-    action_probs = probs.gather(1, actions_buffer.unsqueeze(1))
-        
-    old_logits = logits.detach()
-    old_probs = torch.softmax(old_logits, dim=-1).detach()
-    old_action_probs = old_probs.gather(1, action_buffer.unsqueeze(1))
-
-    ratio = action_probs / old_action_probs
-    surrogate1 = ratio * advantages
-    surrogate2 = torch.clamp(ratio, 1.0 - epsilon, 1.0 + epsilon) * advantages
-    actor_loss = -torch.mean(torch.min(surrogate1, surrogate2))
-
-
-
-    thresh = old_action_probs + torch.clamp(probs - old_probs, -clip_threshold, clip_threshold)
-    value_loss = torch.mean(torch.max((returns - clipped_values)**2, (returns - old_action_probs)**2))
-
-    total_loss = actor_loss + value_loss
-    optimizer.zero_grad()
-    total_loss.backward()
-    optimizer.step()
-
-
-
-
-
-
-
-
-
-
-    
+    # writer = SummaryWriter(<path to log>)
+    main(args)
+    # wandb.finish()
