@@ -57,11 +57,15 @@ def train_reinforce(model, reward, optimizer="adam", learning_rate=.01):
 
         while not game.is_solved():
             state = game.get_state()
+            states.append(state)
+
+            
             action_dist = torch.softmax(model(state)) # depends on if model output is logits or values
             action = np.random.choice(actions, p = action_dist.numpy())
             action_buffer.append(action)
         
             r = reward(state, action)
+            
             reward_buffer.append(reward)
 
             game.process_move(action)
