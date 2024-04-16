@@ -6,16 +6,21 @@ class QLearning:
         self.model = model
         self.max_episodes = max_episodes
 
-    def train(self, env, verbose = True):
+    def train(self, env, verbose = True, shuffle_cap = None, max_steps = 10000):
         for episode in range(self.max_episodes):
             env.reset()
             while env.is_solved():
-                env.shuffle_n(episode // 1000 + 1)
+                if shuffle_cap and episode // 1000 + 1 > shuffle_cap:
+                    env.shuffle_n(shuffle_cap)
+                else:
+                    env.shuffle_n(episode // 1000 + 1)
 
             state = env.get_state()
             done = False
+            steps = 0
 
-            while not done:
+            while not done and steps < max_steps:
+                steps += 1
                 action = self.model.train_action(state)
                 reward = env.process_action(action)
                 next_state = env.get_state()
