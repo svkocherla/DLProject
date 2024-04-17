@@ -12,23 +12,17 @@ class QNetwork(QModel):
         self.model = nn.Sequential(
             nn.Linear(grid_size * grid_size, 64),
             nn.ReLU(),
-            # nn.Linear(256, 256), # makes 2 x 2 case worse for some reason
-            # nn.ReLU(),
             nn.Linear(64, 4)
         ).to(self.device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
         self.loss = nn.MSELoss()
 
-    def one_hot(self, state):
-        # encoded_state = np.zeros((self.grid_size * self.grid_size, self.grid_size * self.grid_size))
-        # for i in range(self.grid_size * self.grid_size):
-        #     encoded_state[i, state[i]] = 1
-        # return encoded_state.flatten()
+    def preprocess(self, state): # input is gridsize^2 size tuple
         return state
 
     def update(self, state, action, reward, next_state):
-        state_tensor = torch.tensor(self.one_hot(state), dtype=torch.float32).to(self.device)
-        next_state_tensor = torch.tensor(self.one_hot(next_state), dtype=torch.float32).to(self.device)
+        state_tensor = torch.tensor(self.preprocess(state), dtype=torch.float32).to(self.device)
+        next_state_tensor = torch.tensor(self.preprocess(next_state), dtype=torch.float32).to(self.device)
         q_values = self.model(state_tensor)
         next_q_values = self.model(next_state_tensor)
 
@@ -43,7 +37,7 @@ class QNetwork(QModel):
 
     def test_action(self, state):
         with torch.no_grad():
-            state_tensor = torch.tensor(self.one_hot(state), dtype=torch.float32).to(self.device)
+            state_tensor = torch.tensor(self.preprocess(state), dtype=torch.float32).to(self.device)
             q_values = self.model(state_tensor)
             action_index = torch.argmax(q_values).item()
             return Move(action_index + 1)
@@ -53,7 +47,7 @@ class QNetwork(QModel):
             return np.random.choice(list(Move))
         else:
             with torch.no_grad():
-                state_tensor = torch.tensor(self.one_hot(state), dtype=torch.float32).to(self.device)
+                state_tensor = torch.tensor(self.preprocess(state), dtype=torch.float32).to(self.device)
                 q_values = self.model(state_tensor)
                 action_index = torch.argmax(q_values).item()
                 return Move(action_index + 1)

@@ -5,7 +5,7 @@ class QLearning:
         self.model = model
         self.max_episodes = max_episodes
 
-    def train(self, env, verbose = True, shuffle_cap = None, max_steps = 10000):
+    def train(self, env, verbose = True, shuffle_cap = None, max_steps = 1000):
         for episode in range(self.max_episodes):
             env.reset()
             shuffle = shuffle_cap if episode // 1000 + 1 > shuffle_cap else episode // 1000 + 1
@@ -26,7 +26,7 @@ class QLearning:
                 done = env.is_solved()
 
             if verbose:
-                if episode % 1000 == 0:
+                if episode % 100 == 0:
                     print(f"Training Episode: {episode} with shuffle {shuffle}")
                 
         print("Completed Training")
