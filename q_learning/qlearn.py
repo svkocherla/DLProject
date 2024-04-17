@@ -18,7 +18,7 @@ class QLearning:
 
             while not done and steps < max_steps:
                 steps += 1
-                action = self.model.train_action(state, eps = 0.9 / (np.log(episode) + 2))
+                action = self.model.train_action(state, eps = 0.9 / (np.log(episode + 2)))
                 reward = env.process_action(action)
                 next_state = env.get_state()
                 self.model.update(state, action, reward, next_state)

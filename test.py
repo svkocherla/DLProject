@@ -16,4 +16,4 @@ if __name__ == "__main__":
     q_test = QNetwork(grid_size, learning_rate, discount_factor, epsilon)
     q_test.load_model("q_learning/models/Qnet4x4")
     q_learning = QLearning(q_test, max_episodes)
-    q_learning.run_tests(env, num_tests=100, verbose=False, max_shuffle=20, step_limit=100, set_shuffle = True)
+    q_learning.run_tests(env, num_tests=10, verbose=True, max_shuffle=20, step_limit=100, set_shuffle = True)
