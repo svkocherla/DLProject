@@ -5,11 +5,11 @@ from simulator.game15 import *
 from util.enums import *
 
 if __name__ == "__main__":
-    grid_size = 2
+    grid_size = 3
     learning_rate = 0.01
     discount_factor = 0.95
     epsilon = 0.15
-    max_episodes = 10000
+    max_episodes = 30000
 
     # turn off verbose if you want
     env = Grid(grid_size)
