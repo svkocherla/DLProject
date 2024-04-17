@@ -1,5 +1,4 @@
 import numpy as np
-from util.enums import Move
 
 class QLearning:
     def __init__(self, model, max_episodes):
@@ -9,11 +8,9 @@ class QLearning:
     def train(self, env, verbose = True, shuffle_cap = None, max_steps = 10000):
         for episode in range(self.max_episodes):
             env.reset()
+            shuffle = shuffle_cap if episode // 1000 + 1 > shuffle_cap else episode // 1000 + 1
             while env.is_solved():
-                if shuffle_cap and episode // 1000 + 1 > shuffle_cap:
-                    env.shuffle_n(shuffle_cap)
-                else:
-                    env.shuffle_n(episode // 1000 + 1)
+                env.shuffle_n(shuffle)
 
             state = env.get_state()
             done = False
@@ -30,7 +27,7 @@ class QLearning:
 
             if verbose:
                 if episode % 1000 == 0:
-                    print(f"Training Episode: {episode} with shuffle {episode // 1000 + 1}")
+                    print(f"Training Episode: {episode} with shuffle {shuffle}")
                 
         print("Completed Training")
 
