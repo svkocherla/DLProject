@@ -6,9 +6,9 @@ from util.enums import *
 
 if __name__ == "__main__":
     grid_size = 2
-    learning_rate = 0.8
+    learning_rate = 0.01
     discount_factor = 0.95
-    epsilon = 0.1
+    epsilon = 0.15
     max_episodes = 10000
 
     # turn of verbose if you want
@@ -17,4 +17,4 @@ if __name__ == "__main__":
     learning = QLearning(dqn, max_episodes)
     learning.train(env, verbose = True, shuffle_cap=20) # use shuffle cap next time
     learning.run_tests(env, num_tests=1000, verbose=True)
-    dqn.save_model("q_learning/models/Qnetsmaller2x2")
+    dqn.save_model("q_learning/models/Qnet2x2")
