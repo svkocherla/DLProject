@@ -10,15 +10,23 @@ class QNetwork(QModel):
         super().__init__(grid_size, learning_rate, discount_factor, epsilon)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model = nn.Sequential(
-            nn.Linear(grid_size * grid_size, 64),
+            nn.Conv2d(9, 32, kernel_size=2, stride=1),
             nn.ReLU(),
-            nn.Linear(64, 4)
+            nn.Flatten(),
+            nn.Linear(32 * 2 * 2, 128),
+            nn.ReLU(),
+            nn.Linear(128, 4)
         ).to(self.device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
         self.loss = nn.MSELoss()
 
-    def preprocess(self, state): # input is gridsize^2 size tuple
-        return state
+    def preprocess(self, state):
+        # input is gridsize^2 size tuple
+        state_tensor = np.zeros((self.grid_size * self.grid_size, self.grid_size * self.grid_size))
+        for i in range(self.grid_size * self.grid_size):
+            state_tensor[i, state[i]] = 1
+        return torch.tensor(state_tensor, dtype=torch.float).reshape(self.grid_size * self.grid_size, self.grid_size, self.grid_size).unsqueeze(0)
+
 
     def update(self, state, action, reward, next_state):
         state_tensor = torch.tensor(self.preprocess(state), dtype=torch.float32).to(self.device)
@@ -26,7 +34,7 @@ class QNetwork(QModel):
         q_values = self.model(state_tensor)
         next_q_values = self.model(next_state_tensor)
 
-        current_q = q_values[action.value - 1]
+        current_q = q_values.squeeze(0)[action.value - 1]
         max_future_q = torch.max(next_q_values).item()
         target_q = reward + self.discount_factor * max_future_q
 
