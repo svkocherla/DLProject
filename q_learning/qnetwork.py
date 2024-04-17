@@ -10,12 +10,12 @@ class QNetwork(QModel):
         super().__init__(grid_size, learning_rate, discount_factor, epsilon)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model = nn.Sequential(
-            nn.Conv2d(16, 32, kernel_size=2, stride=1),
+            nn.Conv2d(9, 16, kernel_size=2, stride=1),
             nn.ReLU(),
             nn.Flatten(),
-            nn.Linear(288, 128),
+            nn.Linear(64, 64),
             nn.ReLU(),
-            nn.Linear(128, 4)
+            nn.Linear(64, 4)
         ).to(self.device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
         self.loss = nn.MSELoss()

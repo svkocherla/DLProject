@@ -5,7 +5,7 @@ from simulator.game15 import *
 from util.enums import *
 
 if __name__ == "__main__":
-    grid_size = 4
+    grid_size = 3
     learning_rate = 0.005
     discount_factor = 0.95
     epsilon = 0.1
@@ -16,5 +16,5 @@ if __name__ == "__main__":
     dqn = QNetwork(grid_size, learning_rate, discount_factor, epsilon)
     learning = QLearning(dqn, max_episodes)
     learning.train(env, verbose = True, shuffle_cap=10) # use shuffle cap next time
+    dqn.save_model("q_learning/models/Qnet3x3")
     learning.run_tests(env, num_tests=1000, verbose=False)
-    dqn.save_model("q_learning/models/Qnet4x4")
