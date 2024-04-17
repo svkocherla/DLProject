@@ -11,10 +11,10 @@ if __name__ == "__main__":
     epsilon = 0.15
     max_episodes = 10000
 
-    # turn of verbose if you want
+    # turn off verbose if you want
     env = Grid(grid_size)
     dqn = QNetwork(grid_size, learning_rate, discount_factor, epsilon)
     learning = QLearning(dqn, max_episodes)
-    learning.train(env, verbose = True, shuffle_cap=20) # use shuffle cap next time
+    learning.train(env, verbose = True, shuffle_cap=50) # use shuffle cap next time
     learning.run_tests(env, num_tests=1000, verbose=True)
-    dqn.save_model("q_learning/models/Qnet2x2")
+    dqn.save_model("q_learning/models/Qnet2x2test")
