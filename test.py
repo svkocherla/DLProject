@@ -5,7 +5,7 @@ from simulator.game15 import *
 from util.enums import *
 
 if __name__ == "__main__":
-    grid_size = 4
+    grid_size = 5
     learning_rate = 0.001
     discount_factor = 0.95
     epsilon = 0.1
@@ -14,6 +14,6 @@ if __name__ == "__main__":
     # turn of verbose if you want
     env = Grid(grid_size)
     q_test = QNetwork(grid_size, learning_rate, discount_factor, epsilon)
-    q_test.load_model("q_learning/models/Qnet4x4")
+    q_test.load_model("q_learning/models/Qnet5x5")
     q_learning = QLearning(q_test, max_episodes)
-    q_learning.run_tests(env, num_tests=10, verbose=True, max_shuffle=20, step_limit=100, set_shuffle = True)
+    q_learning.run_tests(env, num_tests=100, verbose=True, max_shuffle=10, step_limit=100, set_shuffle = True)

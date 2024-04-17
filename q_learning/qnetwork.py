@@ -10,7 +10,7 @@ class QNetwork(QModel):
         super().__init__(grid_size, learning_rate, discount_factor, epsilon)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model = nn.Sequential(
-            nn.Conv2d(16, 32, kernel_size=3, stride=1),
+            nn.Conv2d(25, 32, kernel_size=4, stride=1),
             nn.ReLU(),
             nn.Conv2d(32, 64, kernel_size=2, stride=1),
             nn.ReLU(),
