@@ -8,7 +8,7 @@ class QLearning:
     def train(self, env, verbose = True, shuffle_cap = None, max_steps = 100):
         for episode in range(self.max_episodes):
             env.reset()
-            shuffle = shuffle_cap if episode // 3000 + 1 > shuffle_cap else episode // 3000 + 1
+            shuffle = shuffle_cap if episode // 500 + 1 > shuffle_cap else episode // 500 + 1
             while env.is_solved():
                 env.shuffle_n(shuffle)
 
@@ -18,7 +18,7 @@ class QLearning:
 
             while not done and steps < max_steps:
                 steps += 1
-                action = self.model.train_action(state)
+                action = self.model.train_action(state, eps = 0.5 / (np.log(episode) + 2))
                 reward = env.process_action(action)
                 next_state = env.get_state()
                 self.model.update(state, action, reward, next_state)
@@ -26,7 +26,7 @@ class QLearning:
                 done = env.is_solved()
 
             if verbose:
-                if episode % 100 == 0:
+                if episode % 500 == 0:
                     print(f"Training Episode: {episode} with shuffle {shuffle}")
                 
         print("Completed Training")
@@ -64,11 +64,11 @@ class QLearning:
                 print(f"Timed out in {steps} steps")
             return -1
 
-    def run_tests(self, env, num_tests, step_limit = 100, max_shuffle = 20, verbose = True):
+    def run_tests(self, env, num_tests, step_limit = 100, max_shuffle = 20, verbose = True, set_shuffle = False):
         steps = []
         num_timed_out = 0
         for _ in range(num_tests):
-            steps.append(self.test(env, step_limit, max_shuffle, verbose))
+            steps.append(self.test(env, step_limit, max_shuffle, verbose, set_shuffle=set_shuffle))
             if steps[-1] == -1:
                 steps.pop()
                 num_timed_out += 1

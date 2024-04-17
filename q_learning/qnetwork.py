@@ -10,10 +10,10 @@ class QNetwork(QModel):
         super().__init__(grid_size, learning_rate, discount_factor, epsilon)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model = nn.Sequential(
-            nn.Conv2d(9, 32, kernel_size=2, stride=1),
+            nn.Conv2d(16, 32, kernel_size=2, stride=1),
             nn.ReLU(),
             nn.Flatten(),
-            nn.Linear(32 * 2 * 2, 128),
+            nn.Linear(288, 128),
             nn.ReLU(),
             nn.Linear(128, 4)
         ).to(self.device)
@@ -26,6 +26,7 @@ class QNetwork(QModel):
         for i in range(self.grid_size * self.grid_size):
             state_tensor[i, state[i]] = 1
         return torch.tensor(state_tensor, dtype=torch.float).reshape(self.grid_size * self.grid_size, self.grid_size, self.grid_size).unsqueeze(0)
+        # return torch.tensor(state, dtype=torch.float)
 
 
     def update(self, state, action, reward, next_state):
@@ -50,8 +51,8 @@ class QNetwork(QModel):
             action_index = torch.argmax(q_values).item()
             return Move(action_index + 1)
 
-    def train_action(self, state):
-        if np.random.uniform() < self.epsilon:
+    def train_action(self, state, eps):
+        if np.random.uniform() < eps:
             return np.random.choice(list(Move))
         else:
             with torch.no_grad():
