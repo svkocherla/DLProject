@@ -2,8 +2,10 @@ import torch
 import torch.nn as nn
 from simulator.game15 import Grid
 import abc
-
+import numpy as np
+from reward import naive
 from util.enums import Move
+
 
 class Policy(metaclass=abc.ABCMeta):
     @abc.abstractmethod
@@ -32,52 +34,47 @@ class NNPolicy(Policy):
 #NOTE: you can add Value-Iteration/Sequence-Modeling policies by subclassing Policy
 
 # Define the Value-Iteration Policy class
+
 class ValueIterationPolicy(Policy):
-    def __init__(self, value_iteration_model: nn.Module, gamma=0.9):
-        self.value_iteration_model = value_iteration_model
-        self.gamma = gamma
+    def __init__(self, states, discount_factor=0.9, threshold=0.01):
+        self.states = states
+        self.values = {state.hash(): 0 if not state.is_terminal() else 100 for state in states.values()}
+        self.discount_factor = discount_factor
+        self.threshold = threshold
+        self.policy = {}
 
-    def get_action(self, grid: Grid) -> torch.Tensor:
-        '''Assumes model does not have a softmax layer'''
-        model_outputs = self.value_iteration_model(grid.get_state())
-        action = torch.softmax(model_outputs, dim=-1)
-        return action
+    def value_iteration(self):
+        while True:
+            delta = 0
+            for state_hash, state in self.states.items():
+                if state.is_terminal():
+                    continue
+                max_value = float('-inf')
+                for action in state.possible_actions():
+                    next_state = state.next_state(action)
+                    reward = naive(state, action, next_state)
+                    value = reward + self.discount_factor * self.values[next_state.hash()]
+                    if value > max_value:
+                        max_value = value
+                        self.policy[state_hash] = action
+                delta = max(delta, abs(self.values[state_hash] - max_value))
+                self.values[state_hash] = max_value
+            if delta < self.threshold:
+                break
 
-    def get_move(self, grid: Grid) -> Move:
-        action = self.get_action(grid)
-        move = torch.argmax(action)
-        return Move(move)
+    def get_action(self, state):
+        return self.get_move(state)
+
+    def get_move(self, state):
+        best_action = None
+        best_value = float('-inf')
+        for action in state.possible_actions():
+            next_state = state.next_state(action)
+            value = self.values[next_state.hash()]
+            if value > best_value:
+                best_value = value
+                best_action = action
+        return best_action
+
+
     
-    # Populate the Value Table
-    def update_value_table(self, grid: Grid, optimizer: torch.optim.Optimizer):
-        optimizer.zero_grad()
-        current_state = grid.get_state()
-        current_value = self.value_iteration_model(current_state)
-
-        total_loss = 0
-        for move in Move:
-            # Simulate the move and get the reward
-            reward = grid.process_action(move)
-            next_state = grid.get_state()
-            next_value = self.value_iteration_model(next_state).detach()
-
-            # Compute the target value using the reward and discounted next value
-            target_value = reward + self.gamma * torch.max(next_value)
-            loss = nn.MSELoss()(current_value, target_value.unsqueeze(0))
-
-            # Accumulate loss to optimize
-            loss.backward()
-            total_loss += loss.item()
-
-        optimizer.step()
-        return total_loss / len(Move)
-
-
-    def value_iteration(self, grids, optimizer: torch.optim.Optimizer, num_iterations: int):
-        for _ in range(num_iterations):
-            total_loss = 0
-            for grid in grids:  # Assuming grids is a list of Grid instances
-                loss = self.update_value_table(grid, optimizer)
-                total_loss += loss
-            avg_loss = total_loss / len(grids)
-            print(f"Average Loss: {avg_loss}")
