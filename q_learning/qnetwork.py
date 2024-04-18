@@ -6,29 +6,21 @@ import numpy as np
 from util.enums import Move
 
 class QNetwork(QModel):
-    def __init__(self, grid_size, learning_rate, discount_factor, epsilon):
+    def __init__(self, grid_size, learning_rate, discount_factor, epsilon, model):
         super().__init__(grid_size, learning_rate, discount_factor, epsilon)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.model = nn.Sequential(
-            nn.Conv2d(16, 64, kernel_size=3, stride=1),
-            nn.ReLU(),
-            nn.Conv2d(64, 128, kernel_size=2, stride=1),
-            nn.ReLU(),
-            nn.Flatten(),
-            nn.Linear(128, 128),
-            nn.ReLU(),
-            nn.Linear(128, 4)
-        ).to(self.device)
+        self.model = model.to(self.device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
         self.loss = nn.MSELoss()
 
     def preprocess(self, state):
         # input is gridsize^2 size tuple
+        # differs basing on one hot encoding and whether we are using cnns(unsqeeze)
+        # currently one hot encoded and made for CNNs
         state_tensor = np.zeros((self.grid_size * self.grid_size, self.grid_size * self.grid_size))
         for i in range(self.grid_size * self.grid_size):
             state_tensor[i, state[i]] = 1
         return torch.tensor(state_tensor, dtype=torch.float).reshape(self.grid_size * self.grid_size, self.grid_size, self.grid_size).unsqueeze(0)
-        # return torch.tensor(state, dtype=torch.float)
 
     def update(self, state, action, reward, next_state):
         state_tensor = torch.tensor(self.preprocess(state), dtype=torch.float32).to(self.device)
@@ -36,7 +28,7 @@ class QNetwork(QModel):
         q_values = self.model(state_tensor)
         next_q_values = self.model(next_state_tensor)
 
-        current_q = q_values.squeeze(0)[action.value - 1]
+        current_q = q_values.squeeze(0)[action.value - 1] # squeeze needed for here for cnn models, why is it not needed in other parts of the code?
         max_future_q = torch.max(next_q_values).item()
         target_q = reward + self.discount_factor * max_future_q
 
@@ -52,8 +44,8 @@ class QNetwork(QModel):
             action_index = torch.argmax(q_values).item()
             return Move(action_index + 1)
 
-    def train_action(self, state, eps):
-        if np.random.uniform() < eps:
+    def train_action(self, state, decay_arg):
+        if np.random.uniform() < self.epsilon(decay_arg):
             return np.random.choice(list(Move))
         else:
             with torch.no_grad():

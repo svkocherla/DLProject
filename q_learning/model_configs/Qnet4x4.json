@@ -1,0 +1,17 @@
+{
+    "grid_size": 4,
+    "learning_rate": 0.001,
+    "discount_factor": 0.95,
+    "epsilon_function": "lambda decay_arg: 0.9 / (np.log(decay_arg + 2))",
+    "max_episodes": 10000,
+    "model_layers": [
+      {"type": "Conv2d", "in_channels": 16, "out_channels": 64, "kernel_size": 3, "stride": 1},
+      {"type": "ReLU"},
+      {"type": "Conv2d", "in_channels": 64, "out_channels": 128, "kernel_size": 2, "stride": 1},
+      {"type": "ReLU"},
+      {"type": "Flatten"},
+      {"type": "Linear", "in_features": 128, "out_features": 128},
+      {"type": "ReLU"},
+      {"type": "Linear", "in_features": 128, "out_features": 4}
+    ]
+  }
