@@ -10,8 +10,9 @@ class NPuzzleEnv(gym.Env):
     # metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
     metadata = {"render_modes": []}
 
-    def __init__(self, render_mode=None, n=5):
-        self.n = n  # The size of the square grid
+    def __init__(self, render_mode=None, n=5, k=10):
+        self.n = n  # length of the square grid
+        self.k = k  # default # of shuffles
         self.solved = np.arange(n*n).reshape(n,n)
         self.state = np.arange(n*n).reshape(n,n)
         self.emptyLocation = (n-1,n-1)
@@ -77,18 +78,21 @@ class NPuzzleEnv(gym.Env):
         
     def shuffle(self, k_moves: int):
         moves = self.generate_shuffle(k_moves)
-        status = [self.process_move(move) for move in moves]
-        self._shuffle = moves[status] # TODO: might need to np.array
+        valid = [self.process_move(move) for move in moves]
+        self._shuffle = moves[valid]
     
     # def get_unshuffle(self, shuffle: list[int])-> list[int]:
     #     return np.flip((shuffle + 2) % 4)
+
+    # def get_effective_k(self, shuffle: list[int]) -> int:
 
     def reset(self, seed=None, options=None):
         # We need the following line to seed self.np_random
         super().reset(seed=seed)
 
         self.state = self.solved.copy()
-        self.shuffle_n(options.k_moves)
+        k_moves = options.get("k_moves", self.k)
+        self.shuffle(k_moves)
 
         observation = self._get_obs()
         info = self._get_info()
@@ -99,10 +103,12 @@ class NPuzzleEnv(gym.Env):
         return observation, info
 
     def step(self, action):
-        self.process_move(action)
+        #TODO: invalid moves
+        valid = self.process_move(action)
 
         # An episode is done iff the agent has reached the target
         terminated = np.array_equal(self.state, self.solved)
+        # TODO: function here
         reward = 1 if terminated else 0  # Binary sparse rewards
         observation = self._get_obs()
         info = self._get_info()
