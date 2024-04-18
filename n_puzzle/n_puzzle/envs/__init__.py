@@ -1,0 +1,1 @@
+from n_puzzle.envs.n_puzzle import NPuzzleEnv
