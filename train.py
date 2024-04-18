@@ -6,7 +6,7 @@ from util.enums import *
 
 if __name__ == "__main__":
     grid_size = 4
-    learning_rate = 0.0005
+    learning_rate = 0.00025
     discount_factor = 0.95
     epsilon = 0.1
     max_episodes = 40000
@@ -15,6 +15,6 @@ if __name__ == "__main__":
     env = Grid(grid_size)
     dqn = QNetwork(grid_size, learning_rate, discount_factor, epsilon)
     learning = QLearning(dqn, max_episodes)
-    learning.train(env, verbose = True, shuffle_cap=15) # use shuffle cap next time
+    learning.train(env, verbose = True, shuffle_cap=12) # use shuffle cap next time
     dqn.save_model("q_learning/models/Qnet4x4")
     learning.run_tests(env, num_tests=1000, verbose=False)
