@@ -1,7 +1,8 @@
 # from models import FFN
-from policies import NNPolicy, Policy
+from policies import RayPolicy, Policy
 from simulator.game15 import Grid
 from tqdm.auto import tqdm
+import torch
 
 def play(grid: Grid, policy: Policy, max_moves=10000):
     '''
@@ -35,13 +36,15 @@ def evaluate(grid: Grid, policy, n_games=10, max_moves=10000, n_shuffles=10, ver
     success = float(n_solved * 100)/n_games
     return success
 
-# def main():
-#     model = FFN()
-#     policy = NNPolicy(model)
+def main():
+    model = torch.load("checkpoints/ray_test/model.pt")
+    policy = RayPolicy(model)
 
-#     n_solved = 0
+    n_solved = 0
+    grid = Grid(5)
+    success = evaluate(grid, policy, n_games=100, n_shuffles=50, verbose=True)
 
-#     # print(f"{float(n_solved * 100)/n_games:.2f}% success rate: {n_solved}/{n_games} games solved.")
+    print(f"{success:.2f}% success rate")
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()

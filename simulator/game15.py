@@ -1,6 +1,7 @@
 import numpy as np
 from util.enums import *
 import random
+import torch
 
 from util.enums import Move
 
@@ -12,6 +13,7 @@ class Grid():
         self.grid = np.arange(n*n).reshape(n,n)
         self.solved = np.arange(n*n).reshape(n,n)
         self.emptyLocation = (n-1,n-1)
+        self._moves = []
 
     def process_action(self, action):
         # return reward from (old state, action) -> (new state, reward)
@@ -68,7 +70,9 @@ class Grid():
             return 100
         return -1
 
-    def get_state(self):
+    def get_state(self, use_ray=False):
+        if use_ray:
+            return dict(obs=torch.tensor(self.grid))
         return tuple(self.grid.flatten()) # not mutable so can be used for indexing
 
     def is_solved(self):
@@ -78,11 +82,10 @@ class Grid():
         # create n random moves and perform them on grid to shuffle
         # maybe prevent back and forths?? nvm messes up run time completely by a lot
         actions = [Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT]
-        moves = []
         for _ in range(n):
             move = random.choice(actions)
-            moves.append(move)
-        self.shuffle(moves)
+            self._moves.append(move)
+        self.shuffle(self._moves)
     
     def shuffle(self, moves):
         # perform moves on grid to shuffle

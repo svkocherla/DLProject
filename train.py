@@ -58,6 +58,7 @@ def main(args):
         # wandb.log({"loss": loss})
 
     # TODO: save model to checkpoint
+    # https://pytorch.org/tutorials/beginner/saving_loading_models.html
 
 if __name__ == "__main__":
     args = parser.parse_args()
@@ -72,5 +73,7 @@ if __name__ == "__main__":
     # )
 
     # writer = SummaryWriter(<path to log>)
+    # TODO: tensorboard
+    # https://pytorch.org/tutorials/intermediate/tensorboard_tutorial.html
     main(args)
     # wandb.finish()

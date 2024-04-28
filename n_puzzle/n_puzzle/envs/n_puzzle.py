@@ -1,22 +1,19 @@
 import numpy as np
-# import pygame
 
 import gymnasium as gym
 from gymnasium import spaces
 
 
 class NPuzzleEnv(gym.Env):
-    # TODO: implement rendering
-    # metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
     metadata = {"render_modes": []}
 
-    def __init__(self, render_mode=None, n=5, k=10):
-        self.n = n  # length of the square grid
-        self.k = k  # default # of shuffles
+    def __init__(self, env_config, n=5, k=1, render_mode=None,):
+        self.n = env_config.get("n", n) # length of the square grid
+        self.k = env_config.get("k", k)  # default # of shuffles
+
         self.solved = np.arange(n*n).reshape(n,n)
         self.state = np.arange(n*n).reshape(n,n)
         self.emptyLocation = (n-1,n-1)
-        # self.window_size = 512  # The size of the PyGame window
 
         self.observation_space = spaces.Box(
             low=0,
@@ -37,19 +34,6 @@ class NPuzzleEnv(gym.Env):
 
         self._shuffle = []
 
-        # assert render_mode is None or render_mode in self.metadata["render_modes"]
-        # self.render_mode = render_mode
-
-        # """
-        # If human-rendering is used, `self.window` will be a reference
-        # to the window that we draw to. `self.clock` will be a clock that is used
-        # to ensure that the environment is rendered at the correct framerate in
-        # human-mode. They will remain `None` until human-mode is used for the
-        # first time.
-        # """
-        # self.window = None
-        # self.clock = None
-
     def _get_obs(self):
         return self.state
 
@@ -60,9 +44,19 @@ class NPuzzleEnv(gym.Env):
         moves = np.random.choice(4, k_moves)
         return moves
     
-    # def clean_shuffle(self, moves: int) -> list[int]:
-    #     #TODO: remove cycles and invalid moves
-    #     pass
+    def clean_shuffle(self, shuffle: list) -> list[int]:
+        def is_undo(prev, curr):
+            return abs(prev - curr) == 1 and min(prev, curr) != 1
+
+        stack = []
+        for x in shuffle:
+            if not stack or not is_undo(stack[-1], x):
+                stack.append(x)
+            else:
+                # stack is valid and move is an undo
+                stack.pop()
+        return np.array(stack, dtype=np.int64)
+    
 
     def process_move(self, move: int) -> bool: 
         # moves empty location in direction of move
@@ -77,28 +71,46 @@ class NPuzzleEnv(gym.Env):
         return True
         
     def shuffle(self, k_moves: int):
-        moves = self.generate_shuffle(k_moves)
-        valid = [self.process_move(move) for move in moves]
-        self._shuffle = moves[valid]
-    
-    # def get_unshuffle(self, shuffle: list[int])-> list[int]:
-    #     return np.flip((shuffle + 2) % 4)
+        # generate (possibly invalid) shuffles
+        moves = self.generate_shuffle(k_moves * 20)
 
-    # def get_effective_k(self, shuffle: list[int]) -> int:
+        # remove invalid moves
+        valid = [self.process_move(move) for move in moves]
+        clean = self.clean_shuffle(moves[valid])
+
+        # remove back and forths
+        self._shuffle = clean[:k_moves]
+
+        # reset board state
+        self.state = self.solved.copy()
+        self.emptyLocation = (self.n-1,self.n-1)
+
+        # take the first_k valid moves
+        valid = [self.process_move(move) for move in self._shuffle]
+        self._shuffle = self._shuffle[valid]
+
+    def get_unshuffle(self, shuffle: list[int])-> list[int]:
+        if len(shuffle) == 0:
+            return shuffle
+        flip = lambda x: x ^ 0b1
+        # return flip(np.flip(self.clean_shuffle(shuffle)))
+        return flip(np.flip(shuffle))
+
+    def get_effective_k(self, shuffle: list[int]) -> int:
+        return len(self.clean_shuffle(shuffle))
 
     def reset(self, seed=None, options=None):
         # We need the following line to seed self.np_random
         super().reset(seed=seed)
 
         self.state = self.solved.copy()
-        k_moves = options.get("k_moves", self.k)
+        self.emptyLocation = (self.n-1,self.n-1)
+
+        k_moves = options.get("k_moves", self.k) if options else self.k
         self.shuffle(k_moves)
 
         observation = self._get_obs()
         info = self._get_info()
-
-        # if self.render_mode == "human":
-        #     self._render_frame()
 
         return observation, info
 
@@ -112,8 +124,5 @@ class NPuzzleEnv(gym.Env):
         reward = 1 if terminated else 0  # Binary sparse rewards
         observation = self._get_obs()
         info = self._get_info()
-
-        # if self.render_mode == "human":
-        #     self._render_frame()
 
         return observation, reward, terminated, False, info

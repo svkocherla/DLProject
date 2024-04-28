@@ -29,7 +29,21 @@ class NNPolicy(Policy):
         move = torch.argmax(action)
         return move
     
-#NOTE: you can add Value-Iteration/Sequence-Modeling policies by subclassing Policy
+class RayPolicy(Policy):
+    def __init__(self, model: nn.Module):
+        self.model = model
+
+    def get_action(self, grid: Grid) -> torch.Tensor:
+        '''Assumes model does not have a softmax layer'''
+        model_outputs, _ = self.model(grid.get_state(use_ray=True))
+        action = torch.softmax(model_outputs, -1)
+        return action
+
+    def get_move(self, grid: Grid) -> Move:
+        action = self.get_action(grid)
+        move = torch.argmax(action)
+        return move
+    
 
 # Define the Value-Iteration Policy class
 class ValueIterationPolicy(Policy):
