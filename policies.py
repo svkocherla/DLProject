@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 from simulator.game15 import Grid
 import abc
-from reward import naive
 from util.enums import Move
+from q_learning.qnetwork import QNetwork
 
 class Policy(metaclass=abc.ABCMeta):
     @abc.abstractmethod
@@ -44,6 +44,16 @@ class RayPolicy(Policy):
         move = torch.argmax(action)
         return move
     
+class QPolicy(Policy):
+    def __init__(self, model: QNetwork):
+        self.model = model
+
+    def get_action(self, grid: Grid) -> torch.Tensor:
+        pass
+
+    def get_move(self, grid: Grid) -> Move:
+        return self.model.test_action(grid.get_state())
+    
 
 # Define the Value-Iteration Policy class
 class ValueIterationPolicy(Policy):
@@ -64,7 +74,7 @@ class ValueIterationPolicy(Policy):
                 for action in state.possible_actions():
                     next_state = state.next_state(action)
                     # Calculate reward using the naive reward function
-                    reward = naive(state, action, next_state)  # Assuming naive can be called this way
+                    reward = Grid.get_reward(Grid, state, action, next_state)  # Assuming naive can be called this way
                     value = reward + self.discount_factor * self.values[next_state.hash()]
                     if value > max_value:
                         max_value = value

@@ -1,0 +1,10 @@
+python evaluation.py \
+    -n 4 \
+    --checkpoint q_learning/models/Qnet4x4 \
+    --policy-class NNPolicy \
+    --n-games 100 \
+    --n-shuffles 10 \ 
+    --max-moves 10000 \ 
+    -v
+
+python evaluation.py -n 4 --checkpoint q_learning/models/Qnet4x4 --policy-class NNPolicy --n-games 100 --n-shuffles 10 --max-moves 10000 -v

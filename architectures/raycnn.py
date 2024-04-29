@@ -10,14 +10,12 @@ class RayFFN(TorchModelV2, nn.Module):
         nn.Module.__init__(self)
         
         self.flatten = nn.Flatten(-2, -1)
-        self.embed = nn.Embedding(25, 2)
 
         self._representation_head = nn.Sequential(
-            self.flatten,
-            self.embed
+            self.flatten
         )
 
-        self.fc1 = nn.Linear(25 * 2, 256)
+        self.fc1 = nn.Linear(25, 256)
         self.act1 = nn.ReLU()
         self.fc2 = nn.Linear(256, num_outputs)
 

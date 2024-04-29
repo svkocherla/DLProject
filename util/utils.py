@@ -8,7 +8,7 @@ import torch.nn as nn
 import numpy as np # needed for the eval
 
 
-def loadQnetFromConfig(filename):
+def loadQNetFromConfig(filename):
     with open(filename, 'r') as f:
         config = json.load(f)
     grid_size = config['grid_size']

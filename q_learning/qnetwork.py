@@ -23,8 +23,8 @@ class QNetwork(QModel):
         return torch.tensor(state_tensor, dtype=torch.float).reshape(self.grid_size * self.grid_size, self.grid_size, self.grid_size).unsqueeze(0)
 
     def update(self, state, action, reward, next_state):
-        state_tensor = torch.tensor(self.preprocess(state), dtype=torch.float32).to(self.device)
-        next_state_tensor = torch.tensor(self.preprocess(next_state), dtype=torch.float32).to(self.device)
+        state_tensor = self.preprocess(state).to(self.device, dtype=torch.float32)
+        next_state_tensor = self.preprocess(next_state).to(self.device, dtype=torch.float32)
         q_values = self.model(state_tensor)
         next_q_values = self.model(next_state_tensor)
 
@@ -39,7 +39,7 @@ class QNetwork(QModel):
 
     def test_action(self, state):
         with torch.no_grad():
-            state_tensor = torch.tensor(self.preprocess(state), dtype=torch.float32).to(self.device)
+            state_tensor = self.preprocess(state).to(self.device, dtype=torch.float32)
             q_values = self.model(state_tensor)
             action_index = torch.argmax(q_values).item()
             return Move(action_index + 1)
@@ -49,13 +49,14 @@ class QNetwork(QModel):
             return np.random.choice(list(Move))
         else:
             with torch.no_grad():
-                state_tensor = torch.tensor(self.preprocess(state), dtype=torch.float32).to(self.device)
+                state_tensor = self.preprocess(state).to(self.device, dtype=torch.float32)
                 q_values = self.model(state_tensor)
                 action_index = torch.argmax(q_values).item()
                 return Move(action_index + 1)
 
     def save_model(self, file):
         torch.save(self.model.state_dict(), file)
+        print(f"Saved model to {file}")
 
     def load_model(self, file):
         self.model.load_state_dict(torch.load(file))

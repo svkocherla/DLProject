@@ -105,6 +105,7 @@ class NPuzzleEnv(gym.Env):
 
         self.state = self.solved.copy()
         self.emptyLocation = (self.n-1,self.n-1)
+        self._shuffle = []
 
         k_moves = options.get("k_moves", self.k) if options else self.k
         self.shuffle(k_moves)
