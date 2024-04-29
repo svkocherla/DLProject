@@ -81,6 +81,7 @@ class Grid():
     def shuffle_n(self, n):
         # create n random moves and perform them on grid to shuffle
         # maybe prevent back and forths?? nvm messes up run time completely by a lot
+        # maybe prevent back and forths?? nvm messes up run time completely by a lot
         actions = [Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT]
         for _ in range(n):
             move = random.choice(actions)
