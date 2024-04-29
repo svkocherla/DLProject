@@ -1,6 +1,11 @@
 from simulator.game15 import *
 from utils.enums import *
 
+def reward(game, action):
+    if game.is_solved():
+        return 100
+    else if 
+
 # for testing cube stuff
 grid = Grid(4)
 grid.print_grid()
