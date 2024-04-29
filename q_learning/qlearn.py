@@ -41,7 +41,7 @@ class QLearning:
 
         par = np.random.randint(1, max_shuffle) if not set_shuffle else max_shuffle
         while env.is_solved():
-            env.shuffle_n(par)
+            env.test_shuffle(par)
         state = env.get_state()
         
         if very_verbose:

@@ -9,7 +9,7 @@ if __name__ == "__main__":
     learning_rate = 0.00015
     discount_factor = 0.95
     epsilon = 0.1
-    max_episodes = 100000
+    max_episodes = 50000
 
     # turn off verbose if you want
     env = Grid(grid_size)

@@ -73,6 +73,19 @@ class Grid():
 
     def is_solved(self):
         return np.all(self.grid == self.solved)
+
+    def test_shuffle(self, n):
+        actions = [Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT]
+        count = 0
+        prev = Move.UP
+        while count < n:
+            move = random.choice(actions)
+            if move == oppositeMove(prev):
+                continue
+            prev = move
+            reward = self.process_action(move)
+            if reward != -100:
+                count += 1
     
     def shuffle_n(self, n):
         # create n random moves and perform them on grid to shuffle
