@@ -37,7 +37,6 @@ class PlusConv2d(nn.Module):
         nn.init.kaiming_uniform_(self.weight, a=math.sqrt(5))
 
     def forward(self, input):
-        print(input)
         _, _, h, w = input.shape
         # Create the plus-shaped kernel
         kernel = torch.zeros_like(self.weight)

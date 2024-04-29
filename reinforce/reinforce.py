@@ -35,13 +35,17 @@ class LearnReinforce:
             states = []
             reward_buffer = []
             log_probs = []
+            
 
             for _ in range(max_steps):
                 state = env.get_state()
                 states.append(state)
                 
-                action_dist = torch.softmax(self.model(self.preprocess(state.to(self.device, dtype=torch.float32)))) # depends on if model output is logits or values
-                action = np.random.choice(actions, p = action_dist.numpy())
+                outs = self.model(self.preprocess(state).to(self.device, dtype=torch.float32)) # depends on if model output is logits or values
+                action_dist = torch.nn.functional.softmax(outs)
+                action_dist = torch.squeeze(action_dist, 0)
+
+                action = np.random.choice(actions, p = action_dist.detach().numpy())
 
                 log_probs.append(torch.log(action_dist[action]))
         
@@ -51,15 +55,14 @@ class LearnReinforce:
                 if env.is_solved():
                     break
 
-            reward_buffer = torch.tensor(reward_buffer)
-            log_probs = torch.tensor(log_probs)
+            reward_buffer = torch.tensor(reward_buffer, device = self.device)
+            log_probs = torch.tensor(log_probs, device = self.device)
 
-
+            discounted_rewards = torch.empty_like(reward_buffer)
             # reinforce loss
-            discounts = torch.pow(gamma, torch.arange(len(reward_buffer)))
-            discounted_rewards = discounts * reward_buffer
-
-            #norm = (discounted_rewards - torch.mean(discounted_rewards)) / (torch.std(discounted_rewards) + 1e-9)
+            R = 0
+            for i in reversed(range(len(reward_buffer))):
+                discounted_rewards[i] = gamma * R + reward_buffer[i]
 
             loss = -torch.sum(log_probs * discounted_rewards)
             opt.zero_grad()
