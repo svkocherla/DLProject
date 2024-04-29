@@ -2,10 +2,10 @@ from enum import Enum, auto
 
 # Actions that agent can take
 class Move(Enum):
-    UP = auto()
-    DOWN = auto()
-    LEFT = auto()
-    RIGHT = auto()
+    UP = 0
+    DOWN = 1
+    LEFT = 2
+    RIGHT = 3
 
 def oppositeMove(move):
     if move == Move.UP:

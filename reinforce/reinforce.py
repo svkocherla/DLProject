@@ -4,6 +4,8 @@ import torch.optim as optim
 import argparse
 import torch
 import numpy as np
+from tqdm import tqdm
+import os
 
 
 class LearnReinforce:
@@ -14,8 +16,6 @@ class LearnReinforce:
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     def train_reinforce(self, env, opitimizer = "adam", shuffle_cap = None, max_episodes = 10000, max_steps = 100, step_frequency = 1000, optimizer="adam", learning_rate=.01, gamma = 1):
-
-        
         moves= [Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT]
         actions= [0, 1, 2, 3]
 
@@ -25,7 +25,7 @@ class LearnReinforce:
         elif optimizer == "sgd":
             opt = optim.SGD(self.model.parameters(), lr=learning_rate)
 
-        for episode in range(max_episodes):
+        for episode in tqdm(range(max_episodes)):
 
             env.reset()
             shuffle = shuffle_cap if episode // step_frequency + 1 > shuffle_cap else episode // step_frequency + 1
@@ -42,7 +42,7 @@ class LearnReinforce:
                 states.append(state)
                 
                 outs = self.model(self.preprocess(state).to(self.device, dtype=torch.float32)) # depends on if model output is logits or values
-                action_dist = torch.nn.functional.softmax(outs)
+                action_dist = torch.nn.functional.softmax(outs, -1)
                 action_dist = torch.squeeze(action_dist, 0)
 
                 action = np.random.choice(actions, p = action_dist.clone().detach().numpy())
@@ -55,11 +55,11 @@ class LearnReinforce:
 
                 reward_buffer = torch.cat((reward_buffer, r))
 
-                if(s%10 == 0):
-                    print(state, action, action_dist)
+                # if(s%10 == 0):
+                #     print(state, action, action_dist)
 
                 if env.is_solved():
-                    print("SOLVED")
+                    # print("SOLVED")
                     break           
             
 
@@ -75,10 +75,13 @@ class LearnReinforce:
             loss.backward()
             opt.step()
 
-    def test(self, env, max_steps = 100, max_shuffle = 20, set_shuffle = False):
+    def test(self, env, max_steps = 100, max_shuffle = 20, set_shuffle = False, verbose=False):
         env.reset()
         total_reward = 0
         steps = 0
+
+        moves= [Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT]
+        actions= [0, 1, 2, 3]
 
         par = np.random.randint(1, max_shuffle) if not set_shuffle else max_shuffle
         while env.is_solved():
@@ -89,12 +92,12 @@ class LearnReinforce:
             steps += 1
             with torch.no_grad():
                 outs = self.model(self.preprocess(state).to(self.device, dtype=torch.float32)) # depends on if model output is logits or values
-                action_dist = torch.nn.functional.softmax(outs)
+                action_dist = torch.nn.functional.softmax(outs, -1)
                 action_dist = torch.squeeze(action_dist, 0)
 
                 action = np.random.choice(actions, p = action_dist.clone().detach().numpy())
                 
-            reward = env.process_action(action)
+            reward = env.process_action(Move(action + 1))
             state = env.get_state()
             total_reward += reward
             if env.is_solved():
@@ -111,18 +114,20 @@ class LearnReinforce:
             return -1
 
     def save_model(self, file):
+        os.makedirs(os.path.dirname(file), exist_ok=True)
         torch.save(self.model.state_dict(), file)
         print(f"Saved model to {file}")
 
-    def run_tests(self, env, num_tests, step_limit = 100, max_shuffle = 20, verbose = True, set_shuffle = False):
+    def run_tests(self, env, num_tests=1000, max_steps = 100, max_shuffle = 20, verbose = True, set_shuffle = False):
         steps = []
         num_timed_out = 0
-        for _ in range(num_tests):
-            steps.append(self.test(env, step_limit, max_shuffle, verbose, set_shuffle=set_shuffle))
+        for _ in tqdm(range(num_tests)):
+            # print("set_shuffle", type(set_shuffle))
+            steps.append(self.test(env, max_steps = max_steps, max_shuffle=max_shuffle, set_shuffle=set_shuffle, verbose=verbose))
             if steps[-1] == -1:
                 steps.pop()
                 num_timed_out += 1
-        print(f"avg steps = {sum(steps) / len(steps) if len(steps) != 0 else -1} over {num_tests} trials")
+        print(f"avg steps = {sum(steps) / len(steps) if len(steps) != 0 else -1} over {num_tests - num_timed_out} trials")
         print(f"{num_timed_out} tests timed out")
 
     def preprocess(self, state):
@@ -133,5 +138,3 @@ class LearnReinforce:
         for i in range(self.grid_size * self.grid_size):
             state_tensor[i, state[i]] = 1
         return torch.tensor(state_tensor, dtype=torch.float).reshape(self.grid_size * self.grid_size, self.grid_size, self.grid_size).unsqueeze(0)
-
-

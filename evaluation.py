@@ -3,8 +3,6 @@ from simulator.game15 import Grid
 from tqdm.auto import tqdm
 import torch
 from util.utils import loadQNetFromConfig
-
-
 import argparse
 
 

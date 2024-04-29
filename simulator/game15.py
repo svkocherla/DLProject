@@ -1,6 +1,5 @@
 import numpy as np
 from util.enums import *
-import random
 import torch
 
 from util.enums import Move
@@ -15,13 +14,13 @@ class Grid():
         self._shuffle = []
 
         self._move_to_direction = {
-            Move.UP: np.array([-1, 0]), # UP
-            Move.DOWN: np.array([1, 0]), # DOWN
-            Move.LEFT: np.array([0, -1]), # LEFT
-            Move.RIGHT: np.array([0, 1]), # RIGHT
+            0: np.array([-1, 0]), # UP
+            1: np.array([1, 0]), # DOWN
+            2: np.array([0, -1]), # LEFT
+            3: np.array([0, 1]), # RIGHT
         }
 
-    def process_move(self, move: Enum) -> bool: 
+    def process_move(self, move: int) -> bool: 
         # moves empty location in direction of move
         change = self._move_to_direction[move]
         newLocation = self.emptyLocation + change
@@ -76,27 +75,23 @@ class Grid():
         return np.array(stack, dtype=np.int64)
     
     def ints_to_moves(self, move_ints):
-        return [Move(i + 1) for i in move_ints]
+        return [Move(i) for i in move_ints]
         
     def shuffle(self, k_moves: int):
         # generate (possibly invalid) shuffles
-        move_ints = self.generate_shuffle(k_moves * 20)
-        moves = self.ints_to_moves(move_ints)
+        moves = self.generate_shuffle(k_moves * 20)
 
         # remove invalid moves
         valid = [self.process_move(move) for move in moves]
-        clean = self.clean_shuffle(move_ints[valid])
-
-        # remove back and forths
-        self._shuffle = self.ints_to_moves(clean)[:k_moves]
+        clean = self.clean_shuffle(moves[valid])[:k_moves]
 
         # reset board state
         self.state = self.solved.copy()
         self.emptyLocation = (self.n-1,self.n-1)
 
         # take the first_k valid moves
-        valid = [self.process_move(move) for move in self._shuffle]
-        # self._shuffle = self._shuffle[valid]
+        valid = [self.process_move(move) for move in clean]
+        self._shuffle = clean[valid]
 
     def get_effective_k(self, shuffle: list[int]) -> int:
         return len(self.clean_shuffle(shuffle))
@@ -104,7 +99,18 @@ class Grid():
     def print_grid(self):
         print(self.state)
 
+    def print_shuffle(self):
+        print([Move(i) for i in self._shuffle])
+
+    # NOTE: Gymnasium env shuffles in reset as well
     def reset(self):
         self.state = self.solved.copy()
         self.emptyLocation = (self.n-1,self.n-1)
         self._shuffle = []
+        
+    def get_unshuffle(self, shuffle: list[int])-> list[int]:
+        if len(shuffle) == 0:
+            return shuffle
+        flip = lambda x: x ^ 0b1
+        # return flip(np.flip(self.clean_shuffle(shuffle)))
+        return flip(np.flip(shuffle))
