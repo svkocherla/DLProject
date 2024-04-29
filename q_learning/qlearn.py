@@ -10,7 +10,7 @@ class QLearning:
             env.reset()
             shuffle = shuffle_cap if episode // 1000 + 1 > shuffle_cap else episode // 1000 + 1
             while env.is_solved():
-                env.shuffle_n(shuffle)
+                env.test_shuffle(shuffle)
 
             state = env.get_state()
             done = False
