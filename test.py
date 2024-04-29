@@ -14,6 +14,6 @@ if __name__ == "__main__":
     # turn of verbose if you want
     env = Grid(grid_size)
     q_test = QNetwork(grid_size, learning_rate, discount_factor, epsilon)
-    q_test.load_model("q_learning/models/Qnet4x4R/final")
+    q_test.load_model("q_learning/models/Qnet4x4mil/326000")
     q_learning = QLearning(q_test, max_episodes)
-    q_learning.run_tests(env, num_tests=1000, verbose=True, max_shuffle=10, step_limit=100, set_shuffle = True)
+    q_learning.run_tests(env, num_tests=1000, verbose=True, max_shuffle=15, step_limit=100, set_shuffle = True)
