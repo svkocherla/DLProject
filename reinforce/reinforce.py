@@ -57,7 +57,7 @@ class REINFORCE:
             discounts = torch.pow(gamma, torch.arange(len(reward_buffer)))
             discounted_rewards = discounts * reward_buffer
 
-            norm = (discounted_rewards - torch.mean(discounted_rewards)) / (torch.std(discounted_rewards) + 1e-9)
+            #norm = (discounted_rewards - torch.mean(discounted_rewards)) / (torch.std(discounted_rewards) + 1e-9)
 
             loss = -torch.sum(log_probs * discounted_rewards)
             opt.zero_grad()
