@@ -5,7 +5,7 @@ class QLearning:
         self.model = model
         self.max_episodes = max_episodes
 
-    def train(self, env, verbose = True, shuffle_cap = None, max_steps = 100):
+    def train(self, env, verbose = True, shuffle_cap = None, max_steps = 100, save_steps = False, file = None):
         for episode in range(self.max_episodes):
             env.reset()
             shuffle = shuffle_cap if episode // 1000 + 1 > shuffle_cap else episode // 1000 + 1
@@ -28,6 +28,8 @@ class QLearning:
             if verbose:
                 if episode % 1000 == 0:
                     print(f"Training Episode: {episode} with shuffle {shuffle}")
+                    if save_steps:
+                        self.model.save_model(f'{file}/{episode}')
                 
         print("Completed Training")
 
@@ -72,5 +74,5 @@ class QLearning:
             if steps[-1] == -1:
                 steps.pop()
                 num_timed_out += 1
-        print(f"avg steps = {sum(steps) / len(steps) if len(steps) != 0 else -1} over {num_tests} trials")
+        print(f"avg steps = {sum(steps) / len(steps) if len(steps) != 0 else -1} over {num_tests - num_timed_out} trials")
         print(f"{num_timed_out} tests timed out")
