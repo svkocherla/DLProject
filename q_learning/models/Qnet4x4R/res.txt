@@ -1,0 +1,1007 @@
+(dlproj) sriharshakocherla@Sriharshas-MacBook-Pro project % python test.py
+/Users/sriharshakocherla/Documents/school/s4/dl/project/q_learning/qnetwork.py:50: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  state_tensor = torch.tensor(self.preprocess(state), dtype=torch.float32).to(self.device)
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Timed out in 100 steps
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Completed in 14 steps, 6 steps better than par of 20, Total Reward: 87
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 14 steps, 6 steps better than par of 20, Total Reward: 87
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Timed out in 100 steps
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 14 steps, 6 steps better than par of 20, Total Reward: 87
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 15 steps, 5 steps better than par of 20, Total Reward: 86
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Timed out in 100 steps
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Timed out in 100 steps
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 14 steps, 6 steps better than par of 20, Total Reward: 87
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Timed out in 100 steps
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Timed out in 100 steps
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Timed out in 100 steps
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Completed in 14 steps, 6 steps better than par of 20, Total Reward: 87
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 2 steps, 18 steps better than par of 20, Total Reward: 99
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 5 steps, 15 steps better than par of 20, Total Reward: 96
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Timed out in 100 steps
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 11 steps, 9 steps better than par of 20, Total Reward: 90
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 13 steps, 7 steps better than par of 20, Total Reward: 88
+Timed out in 100 steps
+Timed out in 100 steps
+Timed out in 100 steps
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 10 steps, 10 steps better than par of 20, Total Reward: 91
+Timed out in 100 steps
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Timed out in 100 steps
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 12 steps, 8 steps better than par of 20, Total Reward: 89
+Completed in 3 steps, 17 steps better than par of 20, Total Reward: 98
+Timed out in 100 steps
+Completed in 7 steps, 13 steps better than par of 20, Total Reward: 94
+Completed in 9 steps, 11 steps better than par of 20, Total Reward: 92
+Timed out in 100 steps
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 6 steps, 14 steps better than par of 20, Total Reward: 95
+Completed in 4 steps, 16 steps better than par of 20, Total Reward: 97
+Completed in 8 steps, 12 steps better than par of 20, Total Reward: 93
+Completed in 1 steps, 19 steps better than par of 20, Total Reward: 100
+avg steps = 7.043859649122807 over 684 trials
+316 tests timed out
+Accuracy: 0.6839999999999999
+(dlproj) sriharshakocherla@Sriharshas-MacBook-Pro project % 

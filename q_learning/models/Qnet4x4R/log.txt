@@ -1,0 +1,406 @@
+avg steps = 1.0 over 486 trials
+514 tests timed out
+Accuracy: 0.486
+Training Episode: 0 with shuffle 1
+/Users/sriharshakocherla/Documents/school/s4/dl/project/q_learning/qnetwork.py:60: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  state_tensor = torch.tensor(self.preprocess(state), dtype=torch.float32).to(self.device)
+avg steps = 1.0 over 1000 trials
+0 tests timed out
+Accuracy: 1.0
+Training Episode: 1000 with shuffle 2
+avg steps = 1.3579952267303104 over 419 trials
+581 tests timed out
+Accuracy: 0.41900000000000004
+Training Episode: 2000 with shuffle 2
+avg steps = 1.473053892215569 over 835 trials
+165 tests timed out
+Accuracy: 0.835
+Training Episode: 3000 with shuffle 2
+avg steps = 1.588 over 1000 trials
+0 tests timed out
+Accuracy: 1.0
+Training Episode: 4000 with shuffle 3
+avg steps = 2.124705882352941 over 850 trials
+150 tests timed out
+Accuracy: 0.85
+Training Episode: 5000 with shuffle 3
+avg steps = 2.136017410228509 over 919 trials
+81 tests timed out
+Accuracy: 0.919
+Training Episode: 6000 with shuffle 4
+avg steps = 2.6075334143377886 over 823 trials
+177 tests timed out
+Accuracy: 0.823
+Training Episode: 7000 with shuffle 4
+avg steps = 2.618201997780244 over 901 trials
+99 tests timed out
+Accuracy: 0.901
+Training Episode: 8000 with shuffle 5
+avg steps = 2.6396396396396398 over 666 trials
+334 tests timed out
+Accuracy: 0.6659999999999999
+Training Episode: 9000 with shuffle 5
+avg steps = 2.8248730964467006 over 788 trials
+212 tests timed out
+Accuracy: 0.788
+Training Episode: 10000 with shuffle 5
+avg steps = 2.8771712158808933 over 806 trials
+194 tests timed out
+Accuracy: 0.806
+Training Episode: 11000 with shuffle 5
+avg steps = 2.9325068870523414 over 726 trials
+274 tests timed out
+Accuracy: 0.726
+Training Episode: 12000 with shuffle 5
+avg steps = 3.152198421645998 over 887 trials
+113 tests timed out
+Accuracy: 0.887
+Training Episode: 13000 with shuffle 5
+avg steps = 3.154594594594595 over 925 trials
+75 tests timed out
+Accuracy: 0.925
+Training Episode: 14000 with shuffle 6
+avg steps = 3.6201298701298703 over 924 trials
+76 tests timed out
+Accuracy: 0.924
+Training Episode: 15000 with shuffle 7
+avg steps = 3.566221142162819 over 823 trials
+177 tests timed out
+Accuracy: 0.823
+Training Episode: 16000 with shuffle 7
+avg steps = 3.8214676889375685 over 913 trials
+87 tests timed out
+Accuracy: 0.913
+Training Episode: 17000 with shuffle 8
+avg steps = 2.972027972027972 over 429 trials
+571 tests timed out
+Accuracy: 0.42900000000000005
+Training Episode: 18000 with shuffle 8
+avg steps = 4.104705882352941 over 850 trials
+150 tests timed out
+Accuracy: 0.85
+Training Episode: 19000 with shuffle 8
+avg steps = 4.141280353200883 over 906 trials
+94 tests timed out
+Accuracy: 0.906
+Training Episode: 20000 with shuffle 9
+avg steps = 4.529612756264237 over 878 trials
+122 tests timed out
+Accuracy: 0.878
+Training Episode: 21000 with shuffle 9
+avg steps = 4.473004694835681 over 852 trials
+148 tests timed out
+Accuracy: 0.852
+Training Episode: 22000 with shuffle 9
+avg steps = 4.203252032520325 over 738 trials
+262 tests timed out
+Accuracy: 0.738
+Training Episode: 23000 with shuffle 9
+avg steps = 4.436274509803922 over 816 trials
+184 tests timed out
+Accuracy: 0.8160000000000001
+Training Episode: 24000 with shuffle 9
+avg steps = 4.575685339690107 over 839 trials
+161 tests timed out
+Accuracy: 0.839
+Training Episode: 25000 with shuffle 9
+avg steps = 4.372738238841978 over 829 trials
+171 tests timed out
+Accuracy: 0.829
+Training Episode: 26000 with shuffle 9
+avg steps = 4.585418933623504 over 919 trials
+81 tests timed out
+Accuracy: 0.919
+Training Episode: 27000 with shuffle 10
+avg steps = 4.8629976580796255 over 854 trials
+146 tests timed out
+Accuracy: 0.854
+Training Episode: 28000 with shuffle 10
+avg steps = 4.937086092715232 over 906 trials
+94 tests timed out
+Accuracy: 0.906
+Training Episode: 29000 with shuffle 11
+avg steps = 5.160987074030552 over 851 trials
+149 tests timed out
+Accuracy: 0.851
+Training Episode: 30000 with shuffle 11
+avg steps = 4.9641975308641975 over 810 trials
+190 tests timed out
+Accuracy: 0.81
+Training Episode: 31000 with shuffle 11
+avg steps = 5.052256532066508 over 842 trials
+158 tests timed out
+Accuracy: 0.842
+Training Episode: 32000 with shuffle 11
+avg steps = 4.94484412470024 over 834 trials
+166 tests timed out
+Accuracy: 0.834
+Training Episode: 33000 with shuffle 11
+avg steps = 4.97719087635054 over 833 trials
+167 tests timed out
+Accuracy: 0.833
+Training Episode: 34000 with shuffle 11
+avg steps = 4.984146341463415 over 820 trials
+180 tests timed out
+Accuracy: 0.8200000000000001
+Training Episode: 35000 with shuffle 11
+avg steps = 5.118119266055046 over 872 trials
+128 tests timed out
+Accuracy: 0.872
+Training Episode: 36000 with shuffle 11
+avg steps = 5.020631067961165 over 824 trials
+176 tests timed out
+Accuracy: 0.8240000000000001
+Training Episode: 37000 with shuffle 11
+avg steps = 4.863867684478372 over 786 trials
+214 tests timed out
+Accuracy: 0.786
+Training Episode: 38000 with shuffle 11
+avg steps = 5.011764705882353 over 850 trials
+150 tests timed out
+Accuracy: 0.85
+Training Episode: 39000 with shuffle 11
+avg steps = 4.88715953307393 over 771 trials
+229 tests timed out
+Accuracy: 0.771
+Training Episode: 40000 with shuffle 11
+avg steps = 5.341573033707865 over 890 trials
+110 tests timed out
+Accuracy: 0.89
+Training Episode: 41000 with shuffle 11
+avg steps = 5.220338983050848 over 885 trials
+115 tests timed out
+Accuracy: 0.885
+Training Episode: 42000 with shuffle 11
+avg steps = 4.247582205029014 over 517 trials
+483 tests timed out
+Accuracy: 0.517
+Training Episode: 43000 with shuffle 11
+avg steps = 5.190532544378698 over 845 trials
+155 tests timed out
+Accuracy: 0.845
+Training Episode: 44000 with shuffle 11
+avg steps = 5.13718820861678 over 882 trials
+118 tests timed out
+Accuracy: 0.882
+Training Episode: 45000 with shuffle 11
+avg steps = 5.007237635705669 over 829 trials
+171 tests timed out
+Accuracy: 0.829
+Training Episode: 46000 with shuffle 11
+avg steps = 5.255125284738041 over 878 trials
+122 tests timed out
+Accuracy: 0.878
+Training Episode: 47000 with shuffle 11
+avg steps = 5.081235697940503 over 874 trials
+126 tests timed out
+Accuracy: 0.874
+Training Episode: 48000 with shuffle 11
+avg steps = 5.224099099099099 over 888 trials
+112 tests timed out
+Accuracy: 0.888
+Training Episode: 49000 with shuffle 11
+avg steps = 5.21699196326062 over 871 trials
+129 tests timed out
+Accuracy: 0.871
+Training Episode: 50000 with shuffle 11
+avg steps = 5.176339285714286 over 896 trials
+104 tests timed out
+Accuracy: 0.896
+Training Episode: 51000 with shuffle 11
+avg steps = 5.2020547945205475 over 876 trials
+124 tests timed out
+Accuracy: 0.876
+Training Episode: 52000 with shuffle 11
+avg steps = 5.354330708661418 over 889 trials
+111 tests timed out
+Accuracy: 0.889
+Training Episode: 53000 with shuffle 11
+avg steps = 5.345132743362832 over 904 trials
+96 tests timed out
+Accuracy: 0.904
+Training Episode: 54000 with shuffle 12
+avg steps = 5.5011363636363635 over 880 trials
+120 tests timed out
+Accuracy: 0.88
+Training Episode: 55000 with shuffle 12
+avg steps = 5.457722660653889 over 887 trials
+113 tests timed out
+Accuracy: 0.887
+Training Episode: 56000 with shuffle 12
+avg steps = 5.54577056778679 over 863 trials
+137 tests timed out
+Accuracy: 0.863
+Training Episode: 57000 with shuffle 12
+avg steps = 5.412383177570093 over 856 trials
+144 tests timed out
+Accuracy: 0.856
+Training Episode: 58000 with shuffle 12
+avg steps = 5.492924528301887 over 848 trials
+152 tests timed out
+Accuracy: 0.848
+Training Episode: 59000 with shuffle 12
+avg steps = 5.437793427230047 over 852 trials
+148 tests timed out
+Accuracy: 0.852
+Training Episode: 60000 with shuffle 12
+avg steps = 5.543778801843318 over 868 trials
+132 tests timed out
+Accuracy: 0.868
+Training Episode: 61000 with shuffle 12
+avg steps = 5.472378804960541 over 887 trials
+113 tests timed out
+Accuracy: 0.887
+Training Episode: 62000 with shuffle 12
+avg steps = 5.556805399325085 over 889 trials
+111 tests timed out
+Accuracy: 0.889
+Training Episode: 63000 with shuffle 12
+avg steps = 5.709821428571429 over 896 trials
+104 tests timed out
+Accuracy: 0.896
+Training Episode: 64000 with shuffle 12
+avg steps = 5.444444444444445 over 873 trials
+127 tests timed out
+Accuracy: 0.873
+Training Episode: 65000 with shuffle 12
+avg steps = 5.5136674259681095 over 878 trials
+122 tests timed out
+Accuracy: 0.878
+Training Episode: 66000 with shuffle 12
+avg steps = 5.603859250851305 over 881 trials
+119 tests timed out
+Accuracy: 0.881
+Training Episode: 67000 with shuffle 12
+avg steps = 5.553530751708428 over 878 trials
+122 tests timed out
+Accuracy: 0.878
+Training Episode: 68000 with shuffle 12
+avg steps = 5.457912457912458 over 891 trials
+109 tests timed out
+Accuracy: 0.891
+Training Episode: 69000 with shuffle 12
+avg steps = 5.497123130034522 over 869 trials
+131 tests timed out
+Accuracy: 0.869
+Training Episode: 70000 with shuffle 12
+avg steps = 5.5265486725663715 over 904 trials
+96 tests timed out
+Accuracy: 0.904
+Training Episode: 71000 with shuffle 13
+avg steps = 5.893714285714286 over 875 trials
+125 tests timed out
+Accuracy: 0.875
+Training Episode: 72000 with shuffle 13
+avg steps = 5.576184379001281 over 781 trials
+219 tests timed out
+Accuracy: 0.781
+Training Episode: 73000 with shuffle 13
+avg steps = 5.776643990929705 over 882 trials
+118 tests timed out
+Accuracy: 0.882
+Training Episode: 74000 with shuffle 13
+avg steps = 5.859865470852018 over 892 trials
+108 tests timed out
+Accuracy: 0.892
+Training Episode: 75000 with shuffle 13
+avg steps = 5.901472253680634 over 883 trials
+117 tests timed out
+Accuracy: 0.883
+Training Episode: 76000 with shuffle 13
+avg steps = 4.31353919239905 over 421 trials
+579 tests timed out
+Accuracy: 0.42100000000000004
+Training Episode: 77000 with shuffle 13
+avg steps = 5.773781902552204 over 862 trials
+138 tests timed out
+Accuracy: 0.862
+Training Episode: 78000 with shuffle 13
+avg steps = 5.693807339449541 over 872 trials
+128 tests timed out
+Accuracy: 0.872
+Training Episode: 79000 with shuffle 13
+avg steps = 5.870857142857143 over 875 trials
+125 tests timed out
+Accuracy: 0.875
+Training Episode: 80000 with shuffle 13
+avg steps = 5.9351100811123985 over 863 trials
+137 tests timed out
+Accuracy: 0.863
+Training Episode: 81000 with shuffle 13
+avg steps = 5.923708920187793 over 852 trials
+148 tests timed out
+Accuracy: 0.852
+Training Episode: 82000 with shuffle 13
+avg steps = 5.858574610244989 over 898 trials
+102 tests timed out
+Accuracy: 0.898
+Training Episode: 83000 with shuffle 13
+avg steps = 5.860178970917226 over 894 trials
+106 tests timed out
+Accuracy: 0.894
+Training Episode: 84000 with shuffle 13
+avg steps = 5.856301531213192 over 849 trials
+151 tests timed out
+Accuracy: 0.849
+Training Episode: 85000 with shuffle 13
+avg steps = 5.9289805269186715 over 873 trials
+127 tests timed out
+Accuracy: 0.873
+Training Episode: 86000 with shuffle 13
+avg steps = 6.070077864293659 over 899 trials
+101 tests timed out
+Accuracy: 0.899
+Training Episode: 87000 with shuffle 13
+avg steps = 6.025930101465614 over 887 trials
+113 tests timed out
+Accuracy: 0.887
+Training Episode: 88000 with shuffle 13
+avg steps = 5.95749704840614 over 847 trials
+153 tests timed out
+Accuracy: 0.847
+Training Episode: 89000 with shuffle 13
+avg steps = 5.930795847750865 over 867 trials
+133 tests timed out
+Accuracy: 0.867
+Training Episode: 90000 with shuffle 13
+avg steps = 5.745432399512789 over 821 trials
+179 tests timed out
+Accuracy: 0.821
+Training Episode: 91000 with shuffle 13
+avg steps = 5.978888888888889 over 900 trials
+100 tests timed out
+Accuracy: 0.9
+Training Episode: 92000 with shuffle 13
+avg steps = 5.730576441102757 over 798 trials
+202 tests timed out
+Accuracy: 0.798
+Training Episode: 93000 with shuffle 13
+avg steps = 5.924972004479283 over 893 trials
+107 tests timed out
+Accuracy: 0.893
+Training Episode: 94000 with shuffle 13
+avg steps = 5.817873303167421 over 884 trials
+116 tests timed out
+Accuracy: 0.884
+Training Episode: 95000 with shuffle 13
+avg steps = 5.863636363636363 over 902 trials
+98 tests timed out
+Accuracy: 0.902
+Training Episode: 96000 with shuffle 14
+avg steps = 6.239678899082569 over 872 trials
+128 tests timed out
+Accuracy: 0.872
+Training Episode: 97000 with shuffle 14
+avg steps = 6.18096357226792 over 851 trials
+149 tests timed out
+Accuracy: 0.851
+Training Episode: 98000 with shuffle 14
+avg steps = 6.118266978922716 over 854 trials
+146 tests timed out
+Accuracy: 0.854
+Training Episode: 99000 with shuffle 14
+Completed Training
+avg steps = 4.478213507625273 over 918 trials
+82 tests timed out
+Accuracy: 0.918

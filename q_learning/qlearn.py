@@ -6,11 +6,12 @@ class QLearning:
         self.max_episodes = max_episodes
 
     def train(self, env, verbose = True, shuffle_cap = None, max_steps = 100, save_steps = False, file = None):
+        shuffle = 1
         for episode in range(self.max_episodes):
             env.reset()
-            shuffle = shuffle_cap if episode // 1000 + 1 > shuffle_cap else episode // 1000 + 1
+            # shuffle = shuffle_cap if episode // 1000 + 1 > shuffle_cap else episode // 1000 + 1
             while env.is_solved():
-                env.shuffle_n(shuffle)
+                env.test_shuffle(shuffle)
 
             state = env.get_state()
             done = False
@@ -25,11 +26,14 @@ class QLearning:
                 state = next_state
                 done = env.is_solved()
 
-            if verbose:
-                if episode % 1000 == 0:
+            if episode % 1000 == 0:
+                if save_steps:
+                    self.model.save_model(f'{file}/{episode}')
+                acc = self.run_tests(env, num_tests=1000, verbose=False, max_shuffle=shuffle, step_limit=100, set_shuffle = True)
+                if acc > 0.90:
+                    shuffle += 1
+                if verbose:
                     print(f"Training Episode: {episode} with shuffle {shuffle}")
-                    if save_steps:
-                        self.model.save_model(f'{file}/{episode}')
                 
         print("Completed Training")
 
@@ -76,3 +80,5 @@ class QLearning:
                 num_timed_out += 1
         print(f"avg steps = {sum(steps) / len(steps) if len(steps) != 0 else -1} over {num_tests - num_timed_out} trials")
         print(f"{num_timed_out} tests timed out")
+        print(f"Accuracy: {1 - num_timed_out/num_tests}")
+        return 1 - num_timed_out/num_tests
