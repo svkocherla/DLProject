@@ -2,10 +2,13 @@ import numpy as np
 from util.enums import *
 import random
 
+from util.enums import Move
+
 class Grid():
     #init grid of size n x n; let 15 represent the empty square
     def __init__(self, n):
         self.n = n
+        self.original = np.arange(n*n).reshape(n,n)
         self.grid = np.arange(n*n).reshape(n,n)
         self.solved = np.arange(n*n).reshape(n,n)
         self.emptyLocation = (n-1,n-1)
@@ -13,8 +16,11 @@ class Grid():
     def process_action(self, action):
         # return reward from (old state, action) -> (new state, reward)
         oldgrid = self.grid.copy()
-        self.process_move(action)
-        reward = Grid.get_reward(oldgrid, self.grid.copy(), action)
+        isValid = self.process_move(action)
+        # if illegal move, reward is -100
+        if not isValid:
+            return -100
+        reward = Grid.get_reward(self, oldgrid, action, self.grid.copy())
         return reward
 
 
@@ -56,27 +62,26 @@ class Grid():
 
 
     @staticmethod
-    def get_reward(self, oldgrid, newgrid, action):
+    def get_reward(self, oldgrid, action, newgrid):
         # return reward from (old state, action) -> (new state, reward)
-        if np.all(oldgrid == newgrid):
-            return -1
         if self.is_solved():
             return 100
-        return 0
+        return -1
 
     def get_state(self):
-        return self.grid
+        return tuple(self.grid.flatten()) # not mutable so can be used for indexing
 
     def is_solved(self):
         return np.all(self.grid == self.solved)
     
     def shuffle_n(self, n):
         # create n random moves and perform them on grid to shuffle
-        # maybe prevent back and forths??
+        # maybe prevent back and forths?? nvm messes up run time completely by a lot
         actions = [Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT]
         moves = []
         for _ in range(n):
-            moves.append(random.choice(actions))
+            move = random.choice(actions)
+            moves.append(move)
         self.shuffle(moves)
     
     def shuffle(self, moves):
@@ -86,3 +91,7 @@ class Grid():
 
     def print_grid(self):
         print(self.grid)
+
+    def reset(self):
+        self.grid = self.original.copy()
+        self.emptyLocation = (self.n-1,self.n-1)
