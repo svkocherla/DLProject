@@ -37,7 +37,7 @@ class LearnReinforce:
             log_probs = torch.tensor([], device =self.device, dtype=torch.float32)
             
 
-            for _ in range(max_steps):
+            for s in range(max_steps):
                 state = env.get_state()
                 states.append(state)
                 
@@ -50,14 +50,18 @@ class LearnReinforce:
 
                 log_probs = torch.cat((log_probs, log_prob))
         
-                r = env.process_action(moves[0])
+                r = env.process_action(moves[action])
                 r = torch.tensor(r).unsqueeze(0).to(self.device, dtype=torch.float32)
 
                 reward_buffer = torch.cat((reward_buffer, r))
 
-                if env.is_solved():
-                    break
+                if(s%10 == 0):
+                    print(state, action, action_dist)
 
+                if env.is_solved():
+                    print("SOLVED")
+                    break           
+            
 
             discounted_rewards = torch.empty_like(reward_buffer)
             # reinforce loss
@@ -83,7 +87,13 @@ class LearnReinforce:
         
         while steps < max_steps:
             steps += 1
-            action = self.model.test_action()
+            with torch.no_grad():
+                outs = self.model(self.preprocess(state).to(self.device, dtype=torch.float32)) # depends on if model output is logits or values
+                action_dist = torch.nn.functional.softmax(outs)
+                action_dist = torch.squeeze(action_dist, 0)
+
+                action = np.random.choice(actions, p = action_dist.clone().detach().numpy())
+                
             reward = env.process_action(action)
             state = env.get_state()
             total_reward += reward
