@@ -1,13 +1,13 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
+import math
 
 class WeirdNet(nn.Module):
     def __init__(self):
-        super(ConvNet, self).__init__()
-        self.conv1 = nn.PlusConv2d(16, 32, kernel_size=3, padding=1)
-        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
+        super(WeirdNet, self).__init__()
+        self.conv1 = PlusConv2d(16, 32, kernel_size=3, padding=1)
+        self.conv2 = PlusConv2d(32, 64, kernel_size=3, padding=1)
         self.conv3 = nn.Conv2d(64, 128, kernel_size=3, padding=1)  
         self.fc1 = nn.Linear(128 * 4 * 4, 256)  
         self.fc2 = nn.Linear(256, 4)
@@ -24,7 +24,7 @@ class WeirdNet(nn.Module):
 
 class PlusConv2d(nn.Module):
     def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0):
-        super(CustomConv2d, self).__init__()
+        super(PlusConv2d, self).__init__()
         self.in_channels = in_channels
         self.out_channels = out_channels
         self.kernel_size = kernel_size
@@ -37,7 +37,8 @@ class PlusConv2d(nn.Module):
         nn.init.kaiming_uniform_(self.weight, a=math.sqrt(5))
 
     def forward(self, input):
-        _, _, h, w = input.size()
+        print(input)
+        _, _, h, w = input.shape
         # Create the plus-shaped kernel
         kernel = torch.zeros_like(self.weight)
         kernel[:, :, self.kernel_size //2, :] = 1  # Horizontal line
