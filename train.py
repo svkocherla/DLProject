@@ -98,7 +98,7 @@ from util.utils import preprocess_state, generate_dataset
 from cnn_model import CNNModel
 import matplotlib.pyplot as plt
 
-def run_tests(model, grid_size, num_tests=1000, shuffle_distance=10, step_limit=200):
+def run_tests(model, grid_size, num_tests=1000, shuffle_distance=10, step_limit=100):
     successful_tests = 0
 
     for _ in range(num_tests):
@@ -177,7 +177,8 @@ def train_and_log(model, dataset, epochs, learning_rate=0.001, logging_interval=
 if __name__ == "__main__":
     grid_size = 4
     cnn_model = CNNModel(grid_size)
-    dataset = generate_dataset(grid_size, num_pairs=1000)
+    numofepochs = 10000
+    dataset = generate_dataset(grid_size, num_pairs=1000*numofepochs)
     losses, train_accuracies, test_accuracies_3x3, test_accuracies_4x4 = train_and_log(cnn_model, dataset, epochs=10000)
 
     # Save the model
