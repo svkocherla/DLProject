@@ -22,6 +22,8 @@ class Grid():
 
     def process_move(self, move: int) -> bool: 
         # moves empty location in direction of move
+        if(type(move) == Move):
+            move = move.value
         change = self._move_to_direction[move]
         newLocation = self.emptyLocation + change
         if np.any((newLocation < 0) | (newLocation >= self.n)):
