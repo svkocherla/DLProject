@@ -1,76 +1,188 @@
-import torch.optim as optim
-import argparse
-import wandb
-from torch.utils.tensorboard import SummaryWriter
+# import torch
+# from simulator.game15 import *
+# from util.enums import *
+# from util.utils import preprocess_state, generate_dataset, train_supervised_cnn
+# from cnn_model import CNNModel
+# import matplotlib.pyplot as plt
 
-from simulator.game15 import Grid
+# def run_tests(model, env, num_tests=100, max_shuffle=10, step_limit=100):
+#     successful_tests = 0
+
+#     for _ in range(num_tests):
+#         env.reset()
+#         env.shuffle_n(max_shuffle)
+
+#         state = env.get_state()
+#         steps = 0
+#         while not env.is_solved() and steps < step_limit:
+#             steps += 1
+
+#             state_tensor = preprocess_state(state, model.grid_size).to(model.device)
+
+#             action_logits = model(state_tensor)
+#             action = torch.argmax(action_logits).item() + 1
+
+#             env.process_action(action)
+#             state = env.get_state()
+
+#         if env.is_solved():
+#             successful_tests += 1
+
+#     return successful_tests / num_tests
+
+# def train_and_plot(model, dataset, epochs, learning_rate=0.001):
+#     criterion = torch.nn.CrossEntropyLoss()
+#     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+
+#     losses = []
+#     train_accuracies = []
+#     test_accuracies = []
+
+#     for epoch in range(epochs):
+#         total_loss = 0
+#         correct_train = 0
+
+#         for state, action in dataset:
+#             state_tensor = preprocess_state(state, model.grid_size).to(model.device)
+#             target_action = torch.tensor([action.value - 1], dtype=torch.long).to(model.device)
+
+#             action_logits = model(state_tensor)
+#             loss = criterion(action_logits, target_action)
+
+#             if torch.argmax(action_logits) == target_action:
+#                 correct_train += 1
+
+#             optimizer.zero_grad()
+#             loss.backward()
+#             optimizer.step()
+
+#             total_loss += loss.item()
+
+#         avg_loss = total_loss / len(dataset)
+#         train_accuracy = correct_train / len(dataset)
+
+#         losses.append(avg_loss)
+#         train_accuracies.append(train_accuracy)
+#         test_accuracies.append(run_tests(model, Grid(model.grid_size), num_tests=100))
+
+#         print(f"Epoch {epoch}: Loss: {avg_loss}, Train Accuracy: {train_accuracy}, Test Accuracy: {test_accuracies[-1]}")
+
+#     # Plotting
+#     plt.figure(figsize=(15, 5))
+#     plt.subplot(1, 3, 1)
+#     plt.plot(losses, marker='o', linestyle='-')
+#     plt.title('Loss')
+#     plt.subplot(1, 3, 2)
+#     plt.plot(train_accuracies, marker='o', linestyle='-')
+#     plt.title('Training Accuracy')
+#     plt.subplot(1, 3, 3)
+#     plt.plot(test_accuracies, marker='o', linestyle='-')
+#     plt.title('Test Accuracy')
+#     plt.tight_layout()
+#     plt.show()
+    
+
+# if __name__ == "__main__":
+#     # Model Initialization
+#     grid_size = 4
+#     cnn_model = CNNModel(grid_size)
+#     dataset = generate_dataset(grid_size, num_pairs=1000)
+#     train_and_plot(cnn_model, dataset, epochs=100)
+
+#     # Save the model
+#     torch.save(cnn_model.state_dict(), f"cnn_model_{grid_size}x{grid_size}.pt")
+import torch
+from simulator.game15 import *
 from util.enums import *
-from architectures import FFN
-import models
-import reward
-import policy_optimization
-from evaluation import evaluate
-from policies import *
+from util.utils import preprocess_state, generate_dataset
+from cnn_model import CNNModel
+import matplotlib.pyplot as plt
 
-parser = argparse.ArgumentParser("Train RL agent on Game15")
-parser.add_argument("-n", default=3, type=int, help="n x n game board")
-parser.add_argument("--epochs", default=10, type=int)
-parser.add_argument("--episodes", default=10, type=int, help="# of episodes per epoch")
-parser.add_argument("--max-moves", default=10**5, type=int, help="max length of a trajectory")
-parser.add_argument("--shuffles", default=10, type=int, help="number of moves to shuffle")
+def run_tests(model, grid_size, num_tests=1000, shuffle_distance=10, step_limit=200):
+    successful_tests = 0
 
-parser.add_argument("--model", default="ffn", type=str, help="model architecture as defined in models.py")
-parser.add_argument("--reward-fn", default="naive", type=str, help="reward function as defined in reward.py")
-parser.add_argument("--algorithm", default="reinforce", type=str, help="RL algorithm as defined in policy_optimization.py")
-parser.add_argument("--eval-batch-size", default=10, type=int, help="# of games to evaluate per epoch")
-parser.add_argument("--eval-every", default=1, type=int, help="# of epochs between each evaluation")
+    for _ in range(num_tests):
+        env = Grid(grid_size)
+        env.shuffle_n(shuffle_distance)
 
-parser.add_argument("--run-name", default=10**5, type=str, help="")
+        state = env.get_state()
+        steps = 0
 
-def main(args):
-    model = models.__dict__[args.model](args.n)
+        while not env.is_solved() and steps < step_limit:
+            steps += 1
 
-    # TODO: if chkpt, load from checkpoint
+            state_tensor = preprocess_state(state, grid_size).to(model.device)
 
-    ## training_loop
-    game = Grid(args.n)
-    model = FFN(args.n, 100) # not sure what game state representation we should use
-    optimizer = optim.Adam(model.parameters())
-    train = policy_optimization.__dict__[args.algorithm]
-    reward_fn = reward.__dict__[args.reward_fn]
+            action_logits = model(state_tensor)
+            action = torch.argmax(action_logits).item() + 1
 
-    policy = NNPolicy(model)
+            env.process_action(action)
+            state = env.get_state()
 
-    for epoch in range(args.epochs):
-        # train
-        loss = train(game, model, reward_fn, optimizer, args.episodes)
-        # if epoch % args.eval_every == 0:
-        # # evaluate
-        #     success = evaluate(game, policy, 
-        #                    evaluations=args.eval_batch_size, 
-        #                    max_moves=args.max_moves, 
-        #                    n_shuffles=args.shuffles, 
-        #                    verbose=False)
-        #     # wandb.log({"success": success})
-        #     # print()
-        print(loss)
-        
-        # wandb.log({"loss": loss})
+        if env.is_solved():
+            successful_tests += 1
 
-    # TODO: save model to checkpoint
+    return successful_tests / num_tests
 
+def train_and_log(model, dataset, epochs, learning_rate=0.001, logging_interval=1000):
+    criterion = torch.nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+
+    losses = []
+    train_accuracies = []
+    test_accuracies_3x3 = []
+    test_accuracies_4x4 = []
+
+    for epoch in range(epochs):
+        print(f"Epoch {epoch}")
+        total_loss = 0
+        correct_train = 0
+
+        for state, action in dataset:
+            state_tensor = preprocess_state(state, model.grid_size).to(model.device)
+            target_action = torch.tensor([action.value - 1], dtype=torch.long).to(model.device)
+
+            action_logits = model(state_tensor)
+            loss = criterion(action_logits, target_action)
+
+            if torch.argmax(action_logits) == target_action:
+                correct_train += 1
+
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+            total_loss += loss.item()
+
+        avg_loss = total_loss / len(dataset)
+        train_accuracy = correct_train / len(dataset)
+
+        losses.append(avg_loss)
+        train_accuracies.append(train_accuracy)
+
+        # Every 1000 epochs, log success rates for both grids
+        if (epoch + 1) % logging_interval == 0:
+            success_rate_3x3 = run_tests(model, grid_size=3, num_tests=1000)
+            success_rate_4x4 = run_tests(model, grid_size=4, num_tests=1000)
+
+            test_accuracies_3x3.append((epoch, success_rate_3x3))
+            test_accuracies_4x4.append((epoch, success_rate_4x4))
+
+            print(f"Epoch {epoch}: Loss: {avg_loss}, Train Accuracy: {train_accuracy}")
+            print(f"3x3 Success Rate: {success_rate_3x3}, 4x4 Success Rate: {success_rate_4x4}")
+
+    return losses, train_accuracies, test_accuracies_3x3, test_accuracies_4x4
+
+# Training and logging
 if __name__ == "__main__":
-    args = parser.parse_args()
+    grid_size = 4
+    cnn_model = CNNModel(grid_size)
+    dataset = generate_dataset(grid_size, num_pairs=1000)
+    losses, train_accuracies, test_accuracies_3x3, test_accuracies_4x4 = train_and_log(cnn_model, dataset, epochs=10000)
 
-    # wandb.init(
-    #     # set the wandb project where this run will be logged
-    #     project="7643-project",
-    #     # track hyperparameters and run metadata
-    #     config={
-    #     **args
-    #     }
-    # )
+    # Save the model
+    torch.save(cnn_model.state_dict(), f"cnn_model_{grid_size}x{grid_size}.pt")
 
-    # writer = SummaryWriter(<path to log>)
-    main(args)
-    # wandb.finish()
+    # Display logged results
+    print("3x3 Success Rates:", test_accuracies_3x3)
+    print("4x4 Success Rates:", test_accuracies_4x4)

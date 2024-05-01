@@ -63,10 +63,20 @@ class Grid():
 
     @staticmethod
     def get_reward(self, oldgrid, action, newgrid):
-        # return reward from (old state, action) -> (new state, reward)
-        if self.is_solved():
-            return 100
-        return -1
+        # Check distance to solved state
+        old_distance = np.sum(np.abs(oldgrid.flatten() - self.solved.flatten()))
+        new_distance = np.sum(np.abs(newgrid.flatten() - self.solved.flatten()))
+
+        distance_delta = old_distance - new_distance
+
+        if distance_delta > 0:
+            return 10  # Positive reward for progress
+        elif distance_delta < 0:
+            return -10  # Negative reward for setback
+        else:
+            return -1  # Neutral or small penalty for no progress
+
+
 
     def get_state(self):
         return tuple(self.grid.flatten()) # not mutable so can be used for indexing
@@ -95,3 +105,11 @@ class Grid():
     def reset(self):
         self.grid = self.original.copy()
         self.emptyLocation = (self.n-1,self.n-1)
+    
+    def set_state(self, state):
+        self.grid = state.copy()
+        self.emptyLocation = np.where(state == self.n*self.n-1)
+        self.emptyLocation = (self.emptyLocation[0][0], self.emptyLocation[1][0])
+        return 'VALID'
+    
+    
