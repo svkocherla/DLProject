@@ -15,7 +15,7 @@ class LearnReinforce:
         self.grid_size = grid_size
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    def train_reinforce(self, env, opitimizer = "adam", shuffle_cap = None, max_episodes = 10000, max_steps = 100, step_frequency = 1000, optimizer="adam", learning_rate=.01, gamma = 1):
+    def train_reinforce(self, env, opitimizer = "adam", shuffle_cap = None, max_episodes = 10000, max_steps = 100, step_frequency = 1000, optimizer="adam", learning_rate=.01, gamma = 1, verbose = True, print_freq = 1000):
         moves= [Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT]
         actions= [0, 1, 2, 3]
 
@@ -28,9 +28,13 @@ class LearnReinforce:
         for episode in tqdm(range(max_episodes)):
 
             env.reset()
-            shuffle = shuffle_cap if episode // step_frequency + 1 > shuffle_cap else episode // step_frequency + 1
+            shuffle = 1 if episode // step_frequency + 1 > shuffle_cap else episode // step_frequency + 1
             while env.is_solved():
                 env.shuffle(shuffle) 
+
+            if verbose:
+                if episode % print_freq == 0:
+                    print(f"\nTraining Episode: {episode} with shuffle {shuffle}")
 
             states = []
             reward_buffer = torch.tensor([], device =self.device, dtype=torch.float32)
@@ -55,22 +59,19 @@ class LearnReinforce:
 
                 reward_buffer = torch.cat((reward_buffer, r))
 
-                # if(s%10 == 0):
-                #     print(state, action, action_dist)
+                if(env.is_solved()):
+                    break
 
-                if env.is_solved():
-                    #print("SOLVED")
-                    break           
-            
 
             discounted_rewards = torch.empty_like(reward_buffer)
             # reinforce loss
             R = 0
             for i in reversed(range(len(reward_buffer))):
-                discounted_rewards[i] = gamma * R + reward_buffer[i]
+                R = R * gamma + reward_buffer[i]
+                discounted_rewards[i] = R
 
-            
             opt.zero_grad()
+
             loss = -torch.sum(log_probs * discounted_rewards)
             loss.backward()
             opt.step()
