@@ -59,7 +59,7 @@ class LearnReinforce:
                 #     print(state, action, action_dist)
 
                 if env.is_solved():
-                    # print("SOLVED")
+                    #print("SOLVED")
                     break           
             
 
@@ -97,9 +97,8 @@ class LearnReinforce:
 
                 action = np.random.choice(actions, p = action_dist.clone().detach().numpy())
                 
-            reward = env.process_action(Move(action + 1))
-            state = env.get_state()
-            total_reward += reward
+                reward = env.process_action(moves[action])
+                state = env.get_state()
             if env.is_solved():
                 break
 

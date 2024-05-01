@@ -16,9 +16,9 @@ def main():
     env = Grid(grid_size)
 
     train_test = LearnReinforce(model, max_episodes, grid_size)
-    train_test.train_reinforce(env, max_episodes=max_episodes, shuffle_cap=20, learning_rate = learning_rate, gamma = discount_factor)
+    train_test.train_reinforce(env, max_episodes=100, shuffle_cap=20, learning_rate = learning_rate, gamma = discount_factor)
     
-    train_test.save_model(f"reinforce/models/WeirdNet")
+    train_test.save_model(f"reinforce/models/WeirdNetsmall")
     # training and preliminary validation
     train_test.run_tests(env, num_tests=1000, verbose=False)
 
